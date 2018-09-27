@@ -1,0 +1,468 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MisOfertasModel.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CERTIFICADO">
+    <Key>
+      <PropertyRef Name="ID_CERT" />
+    </Key>
+    <Property Name="ID_CERT" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="PTS_MIN" Type="number" Precision="7" Scale="0" Nullable="false" />
+    <Property Name="PTS_MAX" Type="number" Precision="7" Scale="0" Nullable="false" />
+    <Property Name="DESCUENTO" Type="number" Precision="3" Scale="1" Nullable="false" />
+    <Property Name="TOPE" Type="number" Precision="9" Scale="0" Nullable="false" />
+    <Property Name="RUBRO" Type="varchar2" MaxLength="150" Nullable="false" />
+    <Property Name="CONSUMIDOR_ID_CONS" Type="number" Precision="10" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CONSUMIDOR">
+    <Key>
+      <PropertyRef Name="ID_CONS" />
+    </Key>
+    <Property Name="ID_CONS" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="PUNTOS" Type="number" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="USUARIO_ID_USER" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="PERSONA_RUN" Type="varchar2" MaxLength="11" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DETALLE_OFERTA">
+    <Key>
+      <PropertyRef Name="ID_DET" />
+      <PropertyRef Name="OFERTA_ID_OFERTA" />
+      <PropertyRef Name="CONSUMIDOR_ID_CONS" />
+    </Key>
+    <Property Name="ID_DET" Type="number" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="IMG_BOLETA" Type="blob" Nullable="false" />
+    <Property Name="FEC_VALORACION" Type="date" Nullable="false" />
+    <Property Name="VALORACION" Type="number" Precision="3" Scale="1" Nullable="false" />
+    <Property Name="OFERTA_ID_OFERTA" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="CONSUMIDOR_ID_CONS" Type="number" Precision="10" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DETALLE_PRODUCTO">
+    <Key>
+      <PropertyRef Name="PRODUCTO_ID_PROD" />
+      <PropertyRef Name="SUCURSAL_ID_SUCUR" />
+    </Key>
+    <Property Name="PRODUCTO_ID_PROD" Type="number" Precision="12" Scale="0" Nullable="false" />
+    <Property Name="SUCURSAL_ID_SUCUR" Type="number" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="STK_SUCUR" Type="number" Precision="7" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EMPLEADO">
+    <Key>
+      <PropertyRef Name="ID_EMP" />
+    </Key>
+    <Property Name="ID_EMP" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="CARGO" Type="varchar2" MaxLength="25" Nullable="false" />
+    <Property Name="PERSONA_RUN" Type="varchar2" MaxLength="11" Nullable="false" />
+    <Property Name="USUARIO_ID_USER" Type="number" Precision="10" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EMPRESA">
+    <Key>
+      <PropertyRef Name="RUT" />
+    </Key>
+    <Property Name="RUT" Type="varchar2" MaxLength="18" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar2" MaxLength="25" Nullable="false" />
+    <Property Name="DIRECCION" Type="varchar2" MaxLength="100" Nullable="false" />
+    <Property Name="RAZON_SOCIAL" Type="varchar2" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LOTE">
+    <Key>
+      <PropertyRef Name="ID_LOTE" />
+    </Key>
+    <Property Name="ID_LOTE" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="CANTIDAD" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="FECHA_LIMITE" Type="date" Nullable="false" />
+    <Property Name="PRODUCTO_ID_PROD" Type="number" Precision="12" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MENSAJERIA">
+    <Key>
+      <PropertyRef Name="ID_MSJ" />
+    </Key>
+    <Property Name="ID_MSJ" Type="number" Precision="12" Scale="0" Nullable="false" />
+    <Property Name="ASUNTO" Type="varchar2" MaxLength="25" Nullable="false" />
+    <Property Name="MENSAJE" Type="varchar2" MaxLength="100" Nullable="false" />
+    <Property Name="CUPON" Type="blob" />
+    <Property Name="IMG_OFERTA" Type="blob" />
+    <Property Name="CONSUMIDOR_ID_CONS" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="SUCURSAL_ID_SUCUR" Type="number" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="OFERTA_ID_OFERTA" Type="number" Precision="10" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OFERTA">
+    <Key>
+      <PropertyRef Name="ID_OFERTA" />
+    </Key>
+    <Property Name="ID_OFERTA" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar2" MaxLength="200" Nullable="false" />
+    <Property Name="FEC_INICIO" Type="date" Nullable="false" />
+    <Property Name="FEC_TERMINO" Type="date" Nullable="false" />
+    <Property Name="IMG_OFERTA" Type="blob" Nullable="false" />
+    <Property Name="VALORACION_TOTAL" Type="number" Precision="3" Scale="1" Nullable="false" />
+    <Property Name="PORC_DESC" Type="number" Precision="3" Scale="1" Nullable="false" />
+    <Property Name="SUCURSAL_ID_SUCUR" Type="number" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="PRODUCTO_ID_PROD" Type="number" Precision="12" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PERSONA">
+    <Key>
+      <PropertyRef Name="RUN" />
+    </Key>
+    <Property Name="RUN" Type="varchar2" MaxLength="11" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar2" MaxLength="25" Nullable="false" />
+    <Property Name="PATERNO" Type="varchar2" MaxLength="25" Nullable="false" />
+    <Property Name="MATERNO" Type="varchar2" MaxLength="25" />
+    <Property Name="SEXO" Type="varchar2" MaxLength="20" />
+    <Property Name="EMAIL" Type="varchar2" MaxLength="35" />
+    <Property Name="FEC_NAC" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PRODUCTO">
+    <Key>
+      <PropertyRef Name="ID_PROD" />
+    </Key>
+    <Property Name="ID_PROD" Type="number" Precision="12" Scale="0" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar2" MaxLength="25" Nullable="false" />
+    <Property Name="DESC_PROD" Type="varchar2" MaxLength="200" Nullable="false" />
+    <Property Name="FEC_INGRESO" Type="date" Nullable="false" />
+    <Property Name="ESTADO" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="STK_SEGURO" Type="number" Precision="7" Scale="0" Nullable="false" />
+    <Property Name="RUBRO" Type="varchar2" MaxLength="25" Nullable="false" />
+    <Property Name="DESC_RUBRO" Type="varchar2" MaxLength="200" Nullable="false" />
+    <Property Name="VALOR" Type="number" Precision="9" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="REG_ERROR">
+    <Key>
+      <PropertyRef Name="ID_ERROR" />
+    </Key>
+    <Property Name="ID_ERROR" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar2" MaxLength="200" Nullable="false" />
+    <Property Name="MENSAJERIA_ID_MSJ" Type="number" Precision="12" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="REG_PRODUCTO">
+    <Key>
+      <PropertyRef Name="ID_CASO" />
+    </Key>
+    <Property Name="ID_CASO" Type="number" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar2" MaxLength="200" Nullable="false" />
+    <Property Name="FEC_SALIDA" Type="date" Nullable="false" />
+    <Property Name="PRODUCTO_ID_PROD" Type="number" Precision="12" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SUCURSAL">
+    <Key>
+      <PropertyRef Name="ID_SUCUR" />
+    </Key>
+    <Property Name="ID_SUCUR" Type="number" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar2" MaxLength="25" Nullable="false" />
+    <Property Name="DIRECCION" Type="varchar2" MaxLength="100" Nullable="false" />
+    <Property Name="FONO" Type="varchar2" MaxLength="13" Nullable="false" />
+    <Property Name="COMUNA" Type="varchar2" MaxLength="25" Nullable="false" />
+    <Property Name="EMPRESA_RUT" Type="varchar2" MaxLength="18" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="ID_USER" />
+    </Key>
+    <Property Name="ID_USER" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="USERNAME" Type="varchar2" MaxLength="25" Nullable="false" />
+    <Property Name="PASSWORD" Type="varchar2" MaxLength="65" Nullable="false" />
+    <Property Name="PERFIL" Type="varchar2" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <Association Name="CERTIFICADO_CONSUMIDOR_FK">
+    <End Role="CONSUMIDOR" Type="Self.CONSUMIDOR" Multiplicity="1" />
+    <End Role="CERTIFICADO" Type="Self.CERTIFICADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONSUMIDOR">
+        <PropertyRef Name="ID_CONS" />
+      </Principal>
+      <Dependent Role="CERTIFICADO">
+        <PropertyRef Name="CONSUMIDOR_ID_CONS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CONSUMIDOR_PERSONA_FK">
+    <End Role="PERSONA" Type="Self.PERSONA" Multiplicity="1" />
+    <End Role="CONSUMIDOR" Type="Self.CONSUMIDOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERSONA">
+        <PropertyRef Name="RUN" />
+      </Principal>
+      <Dependent Role="CONSUMIDOR">
+        <PropertyRef Name="PERSONA_RUN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CONSUMIDOR_USUARIO_FK">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="CONSUMIDOR" Type="Self.CONSUMIDOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="ID_USER" />
+      </Principal>
+      <Dependent Role="CONSUMIDOR">
+        <PropertyRef Name="USUARIO_ID_USER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DETALLE_OFERTA_CONSUMIDOR_FK">
+    <End Role="CONSUMIDOR" Type="Self.CONSUMIDOR" Multiplicity="1" />
+    <End Role="DETALLE_OFERTA" Type="Self.DETALLE_OFERTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONSUMIDOR">
+        <PropertyRef Name="ID_CONS" />
+      </Principal>
+      <Dependent Role="DETALLE_OFERTA">
+        <PropertyRef Name="CONSUMIDOR_ID_CONS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DETALLE_OFERTA_OFERTA_FK">
+    <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="1" />
+    <End Role="DETALLE_OFERTA" Type="Self.DETALLE_OFERTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OFERTA">
+        <PropertyRef Name="ID_OFERTA" />
+      </Principal>
+      <Dependent Role="DETALLE_OFERTA">
+        <PropertyRef Name="OFERTA_ID_OFERTA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DETALLE_PRODUCTO_PRODUCTO_FK">
+    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+    <End Role="DETALLE_PRODUCTO" Type="Self.DETALLE_PRODUCTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTO">
+        <PropertyRef Name="ID_PROD" />
+      </Principal>
+      <Dependent Role="DETALLE_PRODUCTO">
+        <PropertyRef Name="PRODUCTO_ID_PROD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DETALLE_PRODUCTO_SUCURSAL_FK">
+    <End Role="SUCURSAL" Type="Self.SUCURSAL" Multiplicity="1" />
+    <End Role="DETALLE_PRODUCTO" Type="Self.DETALLE_PRODUCTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SUCURSAL">
+        <PropertyRef Name="ID_SUCUR" />
+      </Principal>
+      <Dependent Role="DETALLE_PRODUCTO">
+        <PropertyRef Name="SUCURSAL_ID_SUCUR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EMPLEADO_PERSONA_FK">
+    <End Role="PERSONA" Type="Self.PERSONA" Multiplicity="1" />
+    <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERSONA">
+        <PropertyRef Name="RUN" />
+      </Principal>
+      <Dependent Role="EMPLEADO">
+        <PropertyRef Name="PERSONA_RUN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EMPLEADO_USUARIO_FK">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="ID_USER" />
+      </Principal>
+      <Dependent Role="EMPLEADO">
+        <PropertyRef Name="USUARIO_ID_USER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LOTE_PRODUCTO_FK">
+    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+    <End Role="LOTE" Type="Self.LOTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTO">
+        <PropertyRef Name="ID_PROD" />
+      </Principal>
+      <Dependent Role="LOTE">
+        <PropertyRef Name="PRODUCTO_ID_PROD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MENSAJERIA_CONSUMIDOR_FK">
+    <End Role="CONSUMIDOR" Type="Self.CONSUMIDOR" Multiplicity="1" />
+    <End Role="MENSAJERIA" Type="Self.MENSAJERIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONSUMIDOR">
+        <PropertyRef Name="ID_CONS" />
+      </Principal>
+      <Dependent Role="MENSAJERIA">
+        <PropertyRef Name="CONSUMIDOR_ID_CONS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MENSAJERIA_OFERTA_FK">
+    <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="1" />
+    <End Role="MENSAJERIA" Type="Self.MENSAJERIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OFERTA">
+        <PropertyRef Name="ID_OFERTA" />
+      </Principal>
+      <Dependent Role="MENSAJERIA">
+        <PropertyRef Name="OFERTA_ID_OFERTA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MENSAJERIA_SUCURSAL_FK">
+    <End Role="SUCURSAL" Type="Self.SUCURSAL" Multiplicity="1" />
+    <End Role="MENSAJERIA" Type="Self.MENSAJERIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SUCURSAL">
+        <PropertyRef Name="ID_SUCUR" />
+      </Principal>
+      <Dependent Role="MENSAJERIA">
+        <PropertyRef Name="SUCURSAL_ID_SUCUR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OFERTA_PRODUCTO_FK">
+    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+    <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTO">
+        <PropertyRef Name="ID_PROD" />
+      </Principal>
+      <Dependent Role="OFERTA">
+        <PropertyRef Name="PRODUCTO_ID_PROD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OFERTA_SUCURSAL_FK">
+    <End Role="SUCURSAL" Type="Self.SUCURSAL" Multiplicity="1" />
+    <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SUCURSAL">
+        <PropertyRef Name="ID_SUCUR" />
+      </Principal>
+      <Dependent Role="OFERTA">
+        <PropertyRef Name="SUCURSAL_ID_SUCUR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="REG_ERROR_MENSAJERIA_FK">
+    <End Role="MENSAJERIA" Type="Self.MENSAJERIA" Multiplicity="1" />
+    <End Role="REG_ERROR" Type="Self.REG_ERROR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MENSAJERIA">
+        <PropertyRef Name="ID_MSJ" />
+      </Principal>
+      <Dependent Role="REG_ERROR">
+        <PropertyRef Name="MENSAJERIA_ID_MSJ" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="REG_PRODUCTO_PRODUCTO_FK">
+    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+    <End Role="REG_PRODUCTO" Type="Self.REG_PRODUCTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTO">
+        <PropertyRef Name="ID_PROD" />
+      </Principal>
+      <Dependent Role="REG_PRODUCTO">
+        <PropertyRef Name="PRODUCTO_ID_PROD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SUCURSAL_EMPRESA_FK">
+    <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="1" />
+    <End Role="SUCURSAL" Type="Self.SUCURSAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPRESA">
+        <PropertyRef Name="RUT" />
+      </Principal>
+      <Dependent Role="SUCURSAL">
+        <PropertyRef Name="EMPRESA_RUT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MisOfertasModelStoreContainer">
+    <EntitySet Name="CERTIFICADO" EntityType="Self.CERTIFICADO" Schema="MISOFERTAS" store:Type="Tables" />
+    <EntitySet Name="CONSUMIDOR" EntityType="Self.CONSUMIDOR" Schema="MISOFERTAS" store:Type="Tables" />
+    <EntitySet Name="DETALLE_OFERTA" EntityType="Self.DETALLE_OFERTA" Schema="MISOFERTAS" store:Type="Tables" />
+    <EntitySet Name="DETALLE_PRODUCTO" EntityType="Self.DETALLE_PRODUCTO" Schema="MISOFERTAS" store:Type="Tables" />
+    <EntitySet Name="EMPLEADO" EntityType="Self.EMPLEADO" Schema="MISOFERTAS" store:Type="Tables" />
+    <EntitySet Name="EMPRESA" EntityType="Self.EMPRESA" Schema="MISOFERTAS" store:Type="Tables" />
+    <EntitySet Name="LOTE" EntityType="Self.LOTE" Schema="MISOFERTAS" store:Type="Tables" />
+    <EntitySet Name="MENSAJERIA" EntityType="Self.MENSAJERIA" Schema="MISOFERTAS" store:Type="Tables" />
+    <EntitySet Name="OFERTA" EntityType="Self.OFERTA" Schema="MISOFERTAS" store:Type="Tables" />
+    <EntitySet Name="PERSONA" EntityType="Self.PERSONA" Schema="MISOFERTAS" store:Type="Tables" />
+    <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="MISOFERTAS" store:Type="Tables" />
+    <EntitySet Name="REG_ERROR" EntityType="Self.REG_ERROR" Schema="MISOFERTAS" store:Type="Tables" />
+    <EntitySet Name="REG_PRODUCTO" EntityType="Self.REG_PRODUCTO" Schema="MISOFERTAS" store:Type="Tables" />
+    <EntitySet Name="SUCURSAL" EntityType="Self.SUCURSAL" Schema="MISOFERTAS" store:Type="Tables" />
+    <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="MISOFERTAS" store:Type="Tables" />
+    <AssociationSet Name="CERTIFICADO_CONSUMIDOR_FK" Association="Self.CERTIFICADO_CONSUMIDOR_FK">
+      <End Role="CONSUMIDOR" EntitySet="CONSUMIDOR" />
+      <End Role="CERTIFICADO" EntitySet="CERTIFICADO" />
+    </AssociationSet>
+    <AssociationSet Name="CONSUMIDOR_PERSONA_FK" Association="Self.CONSUMIDOR_PERSONA_FK">
+      <End Role="PERSONA" EntitySet="PERSONA" />
+      <End Role="CONSUMIDOR" EntitySet="CONSUMIDOR" />
+    </AssociationSet>
+    <AssociationSet Name="CONSUMIDOR_USUARIO_FK" Association="Self.CONSUMIDOR_USUARIO_FK">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="CONSUMIDOR" EntitySet="CONSUMIDOR" />
+    </AssociationSet>
+    <AssociationSet Name="DETALLE_OFERTA_CONSUMIDOR_FK" Association="Self.DETALLE_OFERTA_CONSUMIDOR_FK">
+      <End Role="CONSUMIDOR" EntitySet="CONSUMIDOR" />
+      <End Role="DETALLE_OFERTA" EntitySet="DETALLE_OFERTA" />
+    </AssociationSet>
+    <AssociationSet Name="DETALLE_OFERTA_OFERTA_FK" Association="Self.DETALLE_OFERTA_OFERTA_FK">
+      <End Role="OFERTA" EntitySet="OFERTA" />
+      <End Role="DETALLE_OFERTA" EntitySet="DETALLE_OFERTA" />
+    </AssociationSet>
+    <AssociationSet Name="DETALLE_PRODUCTO_PRODUCTO_FK" Association="Self.DETALLE_PRODUCTO_PRODUCTO_FK">
+      <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+      <End Role="DETALLE_PRODUCTO" EntitySet="DETALLE_PRODUCTO" />
+    </AssociationSet>
+    <AssociationSet Name="DETALLE_PRODUCTO_SUCURSAL_FK" Association="Self.DETALLE_PRODUCTO_SUCURSAL_FK">
+      <End Role="SUCURSAL" EntitySet="SUCURSAL" />
+      <End Role="DETALLE_PRODUCTO" EntitySet="DETALLE_PRODUCTO" />
+    </AssociationSet>
+    <AssociationSet Name="EMPLEADO_PERSONA_FK" Association="Self.EMPLEADO_PERSONA_FK">
+      <End Role="PERSONA" EntitySet="PERSONA" />
+      <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+    </AssociationSet>
+    <AssociationSet Name="EMPLEADO_USUARIO_FK" Association="Self.EMPLEADO_USUARIO_FK">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+    </AssociationSet>
+    <AssociationSet Name="LOTE_PRODUCTO_FK" Association="Self.LOTE_PRODUCTO_FK">
+      <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+      <End Role="LOTE" EntitySet="LOTE" />
+    </AssociationSet>
+    <AssociationSet Name="MENSAJERIA_CONSUMIDOR_FK" Association="Self.MENSAJERIA_CONSUMIDOR_FK">
+      <End Role="CONSUMIDOR" EntitySet="CONSUMIDOR" />
+      <End Role="MENSAJERIA" EntitySet="MENSAJERIA" />
+    </AssociationSet>
+    <AssociationSet Name="MENSAJERIA_OFERTA_FK" Association="Self.MENSAJERIA_OFERTA_FK">
+      <End Role="OFERTA" EntitySet="OFERTA" />
+      <End Role="MENSAJERIA" EntitySet="MENSAJERIA" />
+    </AssociationSet>
+    <AssociationSet Name="MENSAJERIA_SUCURSAL_FK" Association="Self.MENSAJERIA_SUCURSAL_FK">
+      <End Role="SUCURSAL" EntitySet="SUCURSAL" />
+      <End Role="MENSAJERIA" EntitySet="MENSAJERIA" />
+    </AssociationSet>
+    <AssociationSet Name="OFERTA_PRODUCTO_FK" Association="Self.OFERTA_PRODUCTO_FK">
+      <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+      <End Role="OFERTA" EntitySet="OFERTA" />
+    </AssociationSet>
+    <AssociationSet Name="OFERTA_SUCURSAL_FK" Association="Self.OFERTA_SUCURSAL_FK">
+      <End Role="SUCURSAL" EntitySet="SUCURSAL" />
+      <End Role="OFERTA" EntitySet="OFERTA" />
+    </AssociationSet>
+    <AssociationSet Name="REG_ERROR_MENSAJERIA_FK" Association="Self.REG_ERROR_MENSAJERIA_FK">
+      <End Role="MENSAJERIA" EntitySet="MENSAJERIA" />
+      <End Role="REG_ERROR" EntitySet="REG_ERROR" />
+    </AssociationSet>
+    <AssociationSet Name="REG_PRODUCTO_PRODUCTO_FK" Association="Self.REG_PRODUCTO_PRODUCTO_FK">
+      <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+      <End Role="REG_PRODUCTO" EntitySet="REG_PRODUCTO" />
+    </AssociationSet>
+    <AssociationSet Name="SUCURSAL_EMPRESA_FK" Association="Self.SUCURSAL_EMPRESA_FK">
+      <End Role="EMPRESA" EntitySet="EMPRESA" />
+      <End Role="SUCURSAL" EntitySet="SUCURSAL" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

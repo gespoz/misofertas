@@ -1,0 +1,5 @@
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Library\bin\Debug\MisOfertas.Library.dll
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Library\bin\Debug\MisOfertas.Library.pdb
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Library\obj\Debug\MisOfertas.Library.csprojResolveAssemblyReference.cache
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Library\obj\Debug\MisOfertas.Library.dll
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Library\obj\Debug\MisOfertas.Library.pdb

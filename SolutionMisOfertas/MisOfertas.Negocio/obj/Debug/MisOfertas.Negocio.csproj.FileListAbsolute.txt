@@ -1,0 +1,16 @@
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Negocio\bin\Debug\MisOfertas.Negocio.dll
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Negocio\bin\Debug\MisOfertas.Negocio.pdb
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Negocio\obj\Debug\MisOfertas.Negocio.dll
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Negocio\obj\Debug\MisOfertas.Negocio.pdb
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Negocio\obj\Debug\MisOfertas.Negocio.csprojResolveAssemblyReference.cache
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Negocio\bin\Debug\EntityFramework.dll
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Negocio\bin\Debug\MisOfertas.Cqrs.dll
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Negocio\bin\Debug\MisOfertas.Datos.dll
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Negocio\bin\Debug\SimpleInjector.dll
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Negocio\bin\Debug\MisOfertas.Cqrs.pdb
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Negocio\bin\Debug\MisOfertas.Datos.pdb
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Negocio\bin\Debug\EntityFramework.xml
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Negocio\bin\Debug\SimpleInjector.xml
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Negocio\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Negocio\bin\Debug\MisOfertas.Library.dll
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Negocio\bin\Debug\MisOfertas.Library.pdb

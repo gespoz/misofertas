@@ -1,0 +1,9 @@
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Datos\bin\Debug\MisOfertas.Datos.dll.config
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Datos\bin\Debug\MisOfertas.Datos.dll
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Datos\bin\Debug\MisOfertas.Datos.pdb
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Datos\bin\Debug\EntityFramework.dll
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Datos\bin\Debug\EntityFramework.xml
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Datos\obj\Debug\MisOfertas.Datos.csprojResolveAssemblyReference.cache
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Datos\obj\Debug\MisOfertas.Datos.dll
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Datos\obj\Debug\MisOfertas.Datos.pdb
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Datos\bin\Debug\Oracle.ManagedDataAccess.dll

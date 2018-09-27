@@ -1,0 +1,7 @@
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Cqrs\bin\Debug\MisOfertas.Cqrs.dll
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Cqrs\bin\Debug\MisOfertas.Cqrs.pdb
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Cqrs\bin\Debug\SimpleInjector.dll
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Cqrs\bin\Debug\SimpleInjector.xml
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Cqrs\obj\Debug\MisOfertas.Cqrs.csprojResolveAssemblyReference.cache
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Cqrs\obj\Debug\MisOfertas.Cqrs.dll
+D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Cqrs\obj\Debug\MisOfertas.Cqrs.pdb
