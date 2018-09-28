@@ -1,0 +1,137 @@
+﻿@model MisOfertas.Web.Models.RegistroLogin
+@{
+    ViewBag.Title = "Registro Usuario";
+}
+
+<h2>Registro</h2>
+<hr />
+
+<script>
+    $(function () {
+        $("#datepicker").datepicker();
+    });
+</script>
+
+@using (Html.BeginForm("Register", "Login", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.ValidationSummary(true)
+    <div class="col-md-7">
+        <div class="form-group">
+            @Html.LabelFor(model => model.Run, new { @class = "control-label col-sm-5" })
+            <div class="col-sm-4">
+                @Html.TextBoxFor(model => model.Run, new { @class = "form-control input-xxlarge",
+                                    @onblur = "validarFormatoRut(this)", @onfocus = "limpiarFormatoRut(this)", @oninput = "validarInputRut(this)" })
+                @Html.ValidationMessageFor(model => model.Run, "", new { @style = "color:red" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nombre, new { @class = "control-label col-sm-5" })
+            <div class="col-sm-4">
+                @Html.TextBoxFor(model => model.Nombre, new { @class = "input-xxlarge form-control", @maxlength = "45" })
+                @Html.ValidationMessageFor(model => model.Nombre, "", new { @style = "color:red" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Paterno, "Apellido Paterno", new { @class = "control-label col-sm-5" })
+            <div class="col-sm-4">
+                @Html.TextBoxFor(model => model.Paterno, new { @class = "input-xxlarge form-control", @maxlength = "45", })
+                @Html.ValidationMessageFor(model => model.Paterno, "", new { @style = "color:red" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Materno, "Apellido Materno", new { @class = "control-label col-sm-5" })
+            <div class="col-sm-4">
+                @Html.TextBoxFor(model => model.Materno, new { @class = "input-xxlarge form-control", @maxlength = "45", })
+                @Html.ValidationMessageFor(model => model.Materno, "", new { @style = "color:red" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Fecnac, "Nacimiento", new { @class = "control-label col-sm-5" })
+            <div class="col-sm-6">
+                @Html.EditorFor(model => model.Fecnac, new { @class = "input-xxlarge form-control datepicker" })
+                @Html.ValidationMessageFor(model => model.Fecnac, "", new { @style = "color:red" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sexo, new { @class = "control-label col-sm-5" })
+            <div class="col-sm-4">
+                @Html.TextBoxFor(model => model.Sexo, new { @class = "input-xxlarge form-control", @maxlength = "45" })
+                @Html.ValidationMessageFor(model => model.Sexo, "", new { @style = "color:red" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, new { @class = "control-label col-sm-5" })
+            <div class="col-sm-4">
+                @Html.TextAreaFor(model => model.Email, new { @class = "input-xxlarge form-control", @maxlength = "45" })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @style = "color:red" })
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            @Html.LabelFor(model => model.User, "Usuario", new { @class = "control-label col-sm-4" })
+            <div class="col-sm-6">
+                @Html.TextBoxFor(model => model.User, new { @class = "input-xxlarge form-control", @maxlength = "45" })
+                @Html.ValidationMessageFor(model => model.User, "", new { @style = "color:red" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Pass, new { @class = "control-label col-sm-4" })
+            <div class="col-sm-6">
+                @Html.TextBoxFor(model => model.Pass, new { @class = "input-xxlarge form-control", @maxlength = "45" })
+                @Html.ValidationMessageFor(model => model.Pass, "", new { @style = "color:red" })
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.DisplayFor(m => m.LoginErrorMessage, new { @class = "col-md-4 control-label field-validation-error" })
+    </div>
+    <div class="col-lg-11">
+        <div class="form-actions form-actions-clean col-sm-offset-9">
+            <input type="submit" value="Registrar" class="btn btn-default" />
+            <input type="submit" value="Volver" class="btn btn-default" />
+        </div>
+    </div>
+}
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/datepickerscripts")
+
+    <script>
+        $(document).ready(function () {
+            $(".date-picker").datepicker(
+            {
+                language: "@System.Threading.Thread.CurrentThread.CurrentCulture.Name",
+                weekStart: 1,
+                autoclose: true,
+                minViewMode: 0,
+                format: 'dd-mm-yyyy'
+            });
+        });
+
+        $(function () {
+            $("#datepicker").datepicker();
+        });
+
+        function validarInputRut(rut) {
+            rut.value = rut.value.trim().replace(/[^Kk^0-9]/g, '');
+        }
+
+        function validarFormatoRut(rut) {
+            var valor = rut.value.trim().replace(/[-.\s]/g, '');
+            if (rut.value.length > 1) {
+                var cuerpo = valor.slice(0, -1);
+                var dv = valor.slice(-1).toUpperCase();
+                rut.value = cuerpo + "-" + dv;
+            }
+        }
+
+        function limpiarFormatoRut(rut) {
+            rut.value = rut.value.trim().replace(/[-.\s]/g, '');
+        }
+    </script>
+}
+

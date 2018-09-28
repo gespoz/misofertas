@@ -5,3 +5,12 @@ D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Cqrs\bin\Debug\Simp
 D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Cqrs\obj\Debug\MisOfertas.Cqrs.csprojResolveAssemblyReference.cache
 D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Cqrs\obj\Debug\MisOfertas.Cqrs.dll
 D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Cqrs\obj\Debug\MisOfertas.Cqrs.pdb
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Cqrs\bin\Debug\MisOfertas.Cqrs.dll
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Cqrs\bin\Debug\MisOfertas.Cqrs.pdb
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Cqrs\bin\Debug\SimpleInjector.dll
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Cqrs\bin\Debug\SimpleInjector.xml
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Cqrs\obj\Debug\MisOfertas.Cqrs.csprojAssemblyReference.cache
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Cqrs\obj\Debug\MisOfertas.Cqrs.csproj.CoreCompileInputs.cache
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Cqrs\obj\Debug\MisOfertas.Cqrs.csproj.CopyComplete
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Cqrs\obj\Debug\MisOfertas.Cqrs.dll
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Cqrs\obj\Debug\MisOfertas.Cqrs.pdb

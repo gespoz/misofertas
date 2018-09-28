@@ -3,3 +3,9 @@ D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Library\bin\Debug\M
 D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Library\obj\Debug\MisOfertas.Library.csprojResolveAssemblyReference.cache
 D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Library\obj\Debug\MisOfertas.Library.dll
 D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Library\obj\Debug\MisOfertas.Library.pdb
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Library\bin\Debug\MisOfertas.Library.dll
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Library\bin\Debug\MisOfertas.Library.pdb
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Library\obj\Debug\MisOfertas.Library.csprojAssemblyReference.cache
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Library\obj\Debug\MisOfertas.Library.csproj.CoreCompileInputs.cache
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Library\obj\Debug\MisOfertas.Library.dll
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Library\obj\Debug\MisOfertas.Library.pdb

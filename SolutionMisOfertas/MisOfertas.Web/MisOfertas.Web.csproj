@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -195,21 +196,85 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\date-time\bootstrap-datepicker.min.js" />
+    <Content Include="Content\date-time\bootstrap-datetimepicker.min.js" />
+    <Content Include="Content\date-time\bootstrap-timepicker.min.js" />
+    <Content Include="Content\date-time\css\datepicker.css" />
+    <Content Include="Content\date-time\css\daterangepicker.css" />
+    <Content Include="Content\date-time\daterangepicker.min.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.ar.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.az.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.bg.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.ca.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.cs.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.cy.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.da.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.de.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.el.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.es.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.et.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.fa.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.fi.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.fr.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.gl.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.he.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.hr.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.hu.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.id.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.is.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.it.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.ja.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.ka.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.kk.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.kr.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.lt.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.lv.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.mk.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.ms.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.nb.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.nl-BE.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.nl.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.no.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.pl.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.pt-BR.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.pt.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.ro.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.rs-latin.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.rs.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.ru.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.sk.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.sl.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.sq.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.sv.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.sw.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.th.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.tr.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.ua.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.uk.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.vi.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.zh-CN.js" />
+    <Content Include="Content\date-time\locales\bootstrap-datepicker.zh-TW.js" />
+    <Content Include="Content\date-time\moment.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\_bootstrap-datetimepicker.less" />
+    <Content Include="Content\bootstrap-datetimepicker-build.less" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.8.2.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -243,6 +308,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

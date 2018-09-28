@@ -7,3 +7,14 @@ D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Datos\obj\Debug\Mis
 D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Datos\obj\Debug\MisOfertas.Datos.dll
 D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Datos\obj\Debug\MisOfertas.Datos.pdb
 D:\Projects\Fuentes\misofertas\SolutionMisOfertas\MisOfertas.Datos\bin\Debug\Oracle.ManagedDataAccess.dll
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Datos\bin\Debug\MisOfertas.Datos.dll.config
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Datos\bin\Debug\MisOfertas.Datos.dll
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Datos\bin\Debug\MisOfertas.Datos.pdb
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Datos\bin\Debug\EntityFramework.dll
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Datos\bin\Debug\Oracle.ManagedDataAccess.dll
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Datos\bin\Debug\EntityFramework.xml
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Datos\obj\Debug\MisOfertas.Datos.csprojAssemblyReference.cache
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Datos\obj\Debug\MisOfertas.Datos.csproj.CoreCompileInputs.cache
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Datos\obj\Debug\MisOfertas.Datos.csproj.CopyComplete
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Datos\obj\Debug\MisOfertas.Datos.dll
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Datos\obj\Debug\MisOfertas.Datos.pdb
