@@ -46,6 +46,7 @@ namespace MisOfertas.Web.Models
 
         public string LoginErrorMessage { get; set; }
 
+        public string Perfil { get; set; }
         public int Puntos { get; set; }
     }
 }
