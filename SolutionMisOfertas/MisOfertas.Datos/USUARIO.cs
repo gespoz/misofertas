@@ -20,7 +20,6 @@ namespace MisOfertas.Datos
             this.EMPLEADO = new HashSet<EMPLEADO>();
         }
     
-        public int ID_USER { get; set; }
         public string USERNAME { get; set; }
         public string PASSWORD { get; set; }
         public string PERFIL { get; set; }

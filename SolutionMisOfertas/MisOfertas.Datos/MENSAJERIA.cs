@@ -24,9 +24,10 @@ namespace MisOfertas.Datos
         public string MENSAJE { get; set; }
         public byte[] CUPON { get; set; }
         public byte[] IMG_OFERTA { get; set; }
-        public int CONSUMIDOR_ID_CONS { get; set; }
         public int SUCURSAL_ID_SUCUR { get; set; }
         public int OFERTA_ID_OFERTA { get; set; }
+        public string CONSUMIDOR_USERNAME { get; set; }
+        public string CONSUMIDOR_RUN { get; set; }
     
         public virtual CONSUMIDOR CONSUMIDOR { get; set; }
         public virtual OFERTA OFERTA { get; set; }

@@ -8,9 +8,44 @@ namespace MisOfertas.Negocio.Models
 {
     public class Consumidor
     {
-        public int IdConsumidor { get; set; }
         public int Puntos { get; set; }
-        public int IdUser { get; set; }
+        public string Username { get; set; }
         public string RunPersona { get; set; }
+
+        public Consumidor()
+        {
+            this.Init();
+        }
+
+        private void Init()
+        {
+            this.Puntos = 0;
+            this.Username = string.Empty;
+            this.RunPersona = string.Empty;
+        }
+
+        public bool Agregar()
+        {
+            MisOfertas.Datos.CONSUMIDOR consumidor = new MisOfertas.Datos.CONSUMIDOR();
+            try
+            {
+                using (var db = new MisOfertas.Datos.MisOfertasEntities())
+                {
+                    consumidor.PUNTOS = this.Puntos;
+                    consumidor.PERSONA_RUN = this.RunPersona; 
+                    consumidor.USUARIO_USERNAME = this.Username;
+
+                    db.CONSUMIDOR.Add(consumidor);
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        
     }
 }

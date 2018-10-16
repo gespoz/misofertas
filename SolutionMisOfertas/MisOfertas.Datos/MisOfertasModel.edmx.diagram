@@ -4,26 +4,37 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4f4d6d2171da431fa6247aa5258c37d1" Name="Diagram1">
-        <EntityTypeShape EntityType="MisOfertasModel.CERTIFICADO" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MisOfertasModel.CONSUMIDOR" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MisOfertasModel.DETALLE_OFERTA" Width="1.5" PointX="8.25" PointY="6.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MisOfertasModel.DETALLE_PRODUCTO" Width="1.5" PointX="6" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MisOfertasModel.EMPLEADO" Width="1.5" PointX="6" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="MisOfertasModel.EMPRESA" Width="1.5" PointX="1.5" PointY="18.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="MisOfertasModel.LOTE" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MisOfertasModel.MENSAJERIA" Width="1.5" PointX="5.25" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MisOfertasModel.OFERTA" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
-        <EntityTypeShape EntityType="MisOfertasModel.PERSONA" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MisOfertasModel.PRODUCTO" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="MisOfertasModel.REG_ERROR" Width="1.5" PointX="7.5" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="MisOfertasModel.REG_PRODUCTO" Width="1.5" PointX="3" PointY="22" IsExpanded="true" />
-        <EntityTypeShape EntityType="MisOfertasModel.SUCURSAL" Width="1.5" PointX="0.75" PointY="14.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="MisOfertasModel.USUARIO" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+      <Diagram DiagramId="176cd1c28564470183f325f988185308" Name="Diagram1">
+        <EntityTypeShape EntityType="MisOfertasModel.CERTIFICADO" Width="1.5" PointX="5.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MisOfertasModel.CONSUMIDOR" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MisOfertasModel.DETALLE_OFERTA" Width="1.5" PointX="8.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MisOfertasModel.DETALLE_PRODUCTO" Width="1.5" PointX="6" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="MisOfertasModel.EMPLEADO" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MisOfertasModel.EMPRESA" Width="1.5" PointX="1.5" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MisOfertasModel.LOTE" Width="1.5" PointX="3" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MisOfertasModel.MENSAJERIA" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MisOfertasModel.OFERTA" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MisOfertasModel.PERSONA" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MisOfertasModel.PRODUCTO" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MisOfertasModel.REG_ERROR" Width="1.5" PointX="7.5" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MisOfertasModel.REG_PRODUCTO" Width="1.5" PointX="3" PointY="25.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MisOfertasModel.SUCURSAL" Width="1.5" PointX="0.75" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MisOfertasModel.USUARIO" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
         <AssociationConnector Association="MisOfertasModel.CERTIFICADO_CONSUMIDOR_FK" ManuallyRouted="false" />
         <AssociationConnector Association="MisOfertasModel.CONSUMIDOR_PERSONA_FK" ManuallyRouted="false" />
         <AssociationConnector Association="MisOfertasModel.CONSUMIDOR_USUARIO_FK" ManuallyRouted="false" />
-        <AssociationConnector Association="MisOfertasModel.DETALLE_OFERTA_CONSUMIDOR_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MisOfertasModel.DETALLE_OFERTA_CONSUMIDOR_FK" ManuallyRouted="true" >
+          <ConnectorPoint PointX="4.5" PointY="9.4321907552083317" />
+          <ConnectorPoint PointX="4.5" PointY="9.5559407552083311" />
+          <ConnectorPoint PointX="4.3472222222222223" PointY="9.5559407552083311" />
+          <ConnectorPoint PointX="4.7222222222222223" PointY="9.8071907552083317" />
+          <ConnectorPoint PointX="4.875" PointY="9.8071907552083317" />
+          <ConnectorPoint PointX="4.875" PointY="9.8744921875" />
+          <ConnectorPoint PointX="4.916666666666667" PointY="9.8744921875" />
+          <ConnectorPoint PointX="5.145833333333333" PointY="9.8744921875" />
+          <ConnectorPoint PointX="7.875" PointY="9.8744921875" />
+          <ConnectorPoint PointX="8.25" PointY="9.4994921875" />
+        </AssociationConnector>
         <AssociationConnector Association="MisOfertasModel.MENSAJERIA_CONSUMIDOR_FK" ManuallyRouted="false" />
         <AssociationConnector Association="MisOfertasModel.DETALLE_OFERTA_OFERTA_FK" ManuallyRouted="false" />
         <AssociationConnector Association="MisOfertasModel.DETALLE_PRODUCTO_PRODUCTO_FK" ManuallyRouted="false" />

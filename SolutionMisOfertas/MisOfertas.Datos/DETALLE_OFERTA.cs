@@ -19,7 +19,8 @@ namespace MisOfertas.Datos
         public System.DateTime FEC_VALORACION { get; set; }
         public decimal VALORACION { get; set; }
         public int OFERTA_ID_OFERTA { get; set; }
-        public int CONSUMIDOR_ID_CONS { get; set; }
+        public string CONSUMIDOR_USERNAME { get; set; }
+        public string CONSUMIDOR_RUN { get; set; }
     
         public virtual CONSUMIDOR CONSUMIDOR { get; set; }
         public virtual OFERTA OFERTA { get; set; }

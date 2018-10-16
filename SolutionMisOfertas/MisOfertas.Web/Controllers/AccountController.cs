@@ -47,25 +47,11 @@ namespace MisOfertas.Web.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            var model = new Models.RegistroLogin
-            {
-                Run = null,
-                Nombre = null,
-                Paterno = null,
-                Materno = null,
-                Sexo = null,
-                Email = null,
-                Fecnac = new DateTime(),
-                User = null,
-                Pass = null,
-                Perfil = null,
-                Puntos = 0
-            };
-
-            return View(model);
+            return View();
         }
 
-        public ActionResult Register(Models.RegistroLogin model)
+        [HttpPost]
+        public ActionResult Register(MisOfertas.Web.Models.RegistroLogin model)
         {
             MisOfertas.Negocio.Models.Persona persona = new MisOfertas.Negocio.Models.Persona()
             {
@@ -80,16 +66,27 @@ namespace MisOfertas.Web.Controllers
             MisOfertas.Negocio.Models.Usuario usuario = new MisOfertas.Negocio.Models.Usuario()
             {
                 Username = model.User,
-                Password = model.User,
+                Password = model.Pass,
                 Perfil = "Consumidor"
             };
-            MisOfertas.Negocio.Models.Consumidor consumidor = new MisOfertas.Negocio.Models.Consumidor()
+
+            if (persona.Agregar() == true && usuario.Agregar() == true)
             {
-                Puntos = 0
-            };
+                MisOfertas.Negocio.Models.Consumidor consumidor = new MisOfertas.Negocio.Models.Consumidor()
+                {
+                    RunPersona = model.Run,
+                    Puntos = 0,
+                    Username = model.User
+                };
 
-
-            return View();
+                consumidor.Agregar();
+                return RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                model.LoginErrorMessage = "No se pudo ingresar al usuario.";
+                return View("Register", model);
+            }
         }
     }
 }

@@ -21,10 +21,9 @@ namespace MisOfertas.Datos
             this.MENSAJERIA = new HashSet<MENSAJERIA>();
         }
     
-        public int ID_CONS { get; set; }
         public int PUNTOS { get; set; }
-        public int USUARIO_ID_USER { get; set; }
         public string PERSONA_RUN { get; set; }
+        public string USUARIO_USERNAME { get; set; }
     
         public virtual ICollection<CERTIFICADO> CERTIFICADO { get; set; }
         public virtual PERSONA PERSONA { get; set; }

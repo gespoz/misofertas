@@ -20,7 +20,8 @@ namespace MisOfertas.Datos
         public decimal DESCUENTO { get; set; }
         public int TOPE { get; set; }
         public string RUBRO { get; set; }
-        public int CONSUMIDOR_ID_CONS { get; set; }
+        public string CONSUMIDOR_USERNAME { get; set; }
+        public string CONSUMIDOR_RUN { get; set; }
     
         public virtual CONSUMIDOR CONSUMIDOR { get; set; }
     }

@@ -10,17 +10,18 @@
     <Property Name="DESCUENTO" Type="Decimal" Precision="3" Scale="1" Nullable="false" />
     <Property Name="TOPE" Type="Int32" Nullable="false" />
     <Property Name="RUBRO" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="CONSUMIDOR_ID_CONS" Type="Int32" Nullable="false" />
+    <Property Name="CONSUMIDOR_USERNAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CONSUMIDOR_RUN" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="CONSUMIDOR" Relationship="Self.CERTIFICADO_CONSUMIDOR_FK" FromRole="CERTIFICADO" ToRole="CONSUMIDOR" />
   </EntityType>
   <EntityType Name="CONSUMIDOR">
     <Key>
-      <PropertyRef Name="ID_CONS" />
+      <PropertyRef Name="PERSONA_RUN" />
+      <PropertyRef Name="USUARIO_USERNAME" />
     </Key>
-    <Property Name="ID_CONS" Type="Int32" Nullable="false" />
     <Property Name="PUNTOS" Type="Int32" Nullable="false" />
-    <Property Name="USUARIO_ID_USER" Type="Int32" Nullable="false" />
     <Property Name="PERSONA_RUN" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="USUARIO_USERNAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="CERTIFICADO" Relationship="Self.CERTIFICADO_CONSUMIDOR_FK" FromRole="CONSUMIDOR" ToRole="CERTIFICADO" />
     <NavigationProperty Name="PERSONA" Relationship="Self.CONSUMIDOR_PERSONA_FK" FromRole="CONSUMIDOR" ToRole="PERSONA" />
     <NavigationProperty Name="USUARIO" Relationship="Self.CONSUMIDOR_USUARIO_FK" FromRole="CONSUMIDOR" ToRole="USUARIO" />
@@ -29,16 +30,17 @@
   </EntityType>
   <EntityType Name="DETALLE_OFERTA">
     <Key>
-      <PropertyRef Name="ID_DET" />
       <PropertyRef Name="OFERTA_ID_OFERTA" />
-      <PropertyRef Name="CONSUMIDOR_ID_CONS" />
+      <PropertyRef Name="CONSUMIDOR_USERNAME" />
+      <PropertyRef Name="CONSUMIDOR_RUN" />
     </Key>
     <Property Name="ID_DET" Type="Int32" Nullable="false" />
     <Property Name="IMG_BOLETA" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
     <Property Name="FEC_VALORACION" Type="DateTime" Nullable="false" />
     <Property Name="VALORACION" Type="Decimal" Precision="3" Scale="1" Nullable="false" />
     <Property Name="OFERTA_ID_OFERTA" Type="Int32" Nullable="false" />
-    <Property Name="CONSUMIDOR_ID_CONS" Type="Int32" Nullable="false" />
+    <Property Name="CONSUMIDOR_USERNAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CONSUMIDOR_RUN" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="CONSUMIDOR" Relationship="Self.DETALLE_OFERTA_CONSUMIDOR_FK" FromRole="DETALLE_OFERTA" ToRole="CONSUMIDOR" />
     <NavigationProperty Name="OFERTA" Relationship="Self.DETALLE_OFERTA_OFERTA_FK" FromRole="DETALLE_OFERTA" ToRole="OFERTA" />
   </EntityType>
@@ -55,12 +57,12 @@
   </EntityType>
   <EntityType Name="EMPLEADO">
     <Key>
-      <PropertyRef Name="ID_EMP" />
+      <PropertyRef Name="PERSONA_RUN" />
+      <PropertyRef Name="USUARIO_USERNAME" />
     </Key>
-    <Property Name="ID_EMP" Type="Int32" Nullable="false" />
     <Property Name="CARGO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="PERSONA_RUN" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="USUARIO_ID_USER" Type="Int32" Nullable="false" />
+    <Property Name="USUARIO_USERNAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="PERSONA" Relationship="Self.EMPLEADO_PERSONA_FK" FromRole="EMPLEADO" ToRole="PERSONA" />
     <NavigationProperty Name="USUARIO" Relationship="Self.EMPLEADO_USUARIO_FK" FromRole="EMPLEADO" ToRole="USUARIO" />
   </EntityType>
@@ -93,9 +95,10 @@
     <Property Name="MENSAJE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="CUPON" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="IMG_OFERTA" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <Property Name="CONSUMIDOR_ID_CONS" Type="Int32" Nullable="false" />
     <Property Name="SUCURSAL_ID_SUCUR" Type="Int32" Nullable="false" />
     <Property Name="OFERTA_ID_OFERTA" Type="Int32" Nullable="false" />
+    <Property Name="CONSUMIDOR_USERNAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CONSUMIDOR_RUN" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="CONSUMIDOR" Relationship="Self.MENSAJERIA_CONSUMIDOR_FK" FromRole="MENSAJERIA" ToRole="CONSUMIDOR" />
     <NavigationProperty Name="OFERTA" Relationship="Self.MENSAJERIA_OFERTA_FK" FromRole="MENSAJERIA" ToRole="OFERTA" />
     <NavigationProperty Name="SUCURSAL" Relationship="Self.MENSAJERIA_SUCURSAL_FK" FromRole="MENSAJERIA" ToRole="SUCURSAL" />
@@ -187,9 +190,8 @@
   </EntityType>
   <EntityType Name="USUARIO">
     <Key>
-      <PropertyRef Name="ID_USER" />
+      <PropertyRef Name="USERNAME" />
     </Key>
-    <Property Name="ID_USER" Type="Int32" Nullable="false" />
     <Property Name="USERNAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="PASSWORD" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="PERFIL" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
@@ -197,19 +199,25 @@
     <NavigationProperty Name="EMPLEADO" Relationship="Self.EMPLEADO_USUARIO_FK" FromRole="USUARIO" ToRole="EMPLEADO" />
   </EntityType>
   <Association Name="CERTIFICADO_CONSUMIDOR_FK">
-    <End Role="CONSUMIDOR" Type="Self.CONSUMIDOR" Multiplicity="1" />
+    <End Role="CONSUMIDOR" Type="Self.CONSUMIDOR" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="CERTIFICADO" Type="Self.CERTIFICADO" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CONSUMIDOR">
-        <PropertyRef Name="ID_CONS" />
+        <PropertyRef Name="USUARIO_USERNAME" />
+        <PropertyRef Name="PERSONA_RUN" />
       </Principal>
       <Dependent Role="CERTIFICADO">
-        <PropertyRef Name="CONSUMIDOR_ID_CONS" />
+        <PropertyRef Name="CONSUMIDOR_USERNAME" />
+        <PropertyRef Name="CONSUMIDOR_RUN" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="CONSUMIDOR_PERSONA_FK">
-    <End Role="PERSONA" Type="Self.PERSONA" Multiplicity="1" />
+    <End Role="PERSONA" Type="Self.PERSONA" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="CONSUMIDOR" Type="Self.CONSUMIDOR" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="PERSONA">
@@ -221,43 +229,55 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CONSUMIDOR_USUARIO_FK">
-    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="CONSUMIDOR" Type="Self.CONSUMIDOR" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="USUARIO">
-        <PropertyRef Name="ID_USER" />
+        <PropertyRef Name="USERNAME" />
       </Principal>
       <Dependent Role="CONSUMIDOR">
-        <PropertyRef Name="USUARIO_ID_USER" />
+        <PropertyRef Name="USUARIO_USERNAME" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="DETALLE_OFERTA_CONSUMIDOR_FK">
-    <End Role="CONSUMIDOR" Type="Self.CONSUMIDOR" Multiplicity="1" />
+    <End Role="CONSUMIDOR" Type="Self.CONSUMIDOR" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="DETALLE_OFERTA" Type="Self.DETALLE_OFERTA" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CONSUMIDOR">
-        <PropertyRef Name="ID_CONS" />
+        <PropertyRef Name="USUARIO_USERNAME" />
+        <PropertyRef Name="PERSONA_RUN" />
       </Principal>
       <Dependent Role="DETALLE_OFERTA">
-        <PropertyRef Name="CONSUMIDOR_ID_CONS" />
+        <PropertyRef Name="CONSUMIDOR_USERNAME" />
+        <PropertyRef Name="CONSUMIDOR_RUN" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="MENSAJERIA_CONSUMIDOR_FK">
-    <End Role="CONSUMIDOR" Type="Self.CONSUMIDOR" Multiplicity="1" />
+    <End Role="CONSUMIDOR" Type="Self.CONSUMIDOR" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="MENSAJERIA" Type="Self.MENSAJERIA" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CONSUMIDOR">
-        <PropertyRef Name="ID_CONS" />
+        <PropertyRef Name="USUARIO_USERNAME" />
+        <PropertyRef Name="PERSONA_RUN" />
       </Principal>
       <Dependent Role="MENSAJERIA">
-        <PropertyRef Name="CONSUMIDOR_ID_CONS" />
+        <PropertyRef Name="CONSUMIDOR_USERNAME" />
+        <PropertyRef Name="CONSUMIDOR_RUN" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="DETALLE_OFERTA_OFERTA_FK">
-    <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="1" />
+    <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="DETALLE_OFERTA" Type="Self.DETALLE_OFERTA" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="OFERTA">
@@ -269,7 +289,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="DETALLE_PRODUCTO_PRODUCTO_FK">
-    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="DETALLE_PRODUCTO" Type="Self.DETALLE_PRODUCTO" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="PRODUCTO">
@@ -281,7 +303,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="DETALLE_PRODUCTO_SUCURSAL_FK">
-    <End Role="SUCURSAL" Type="Self.SUCURSAL" Multiplicity="1" />
+    <End Role="SUCURSAL" Type="Self.SUCURSAL" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="DETALLE_PRODUCTO" Type="Self.DETALLE_PRODUCTO" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="SUCURSAL">
@@ -293,7 +317,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="EMPLEADO_PERSONA_FK">
-    <End Role="PERSONA" Type="Self.PERSONA" Multiplicity="1" />
+    <End Role="PERSONA" Type="Self.PERSONA" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="PERSONA">
@@ -305,19 +331,23 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="EMPLEADO_USUARIO_FK">
-    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="USUARIO">
-        <PropertyRef Name="ID_USER" />
+        <PropertyRef Name="USERNAME" />
       </Principal>
       <Dependent Role="EMPLEADO">
-        <PropertyRef Name="USUARIO_ID_USER" />
+        <PropertyRef Name="USUARIO_USERNAME" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="SUCURSAL_EMPRESA_FK">
-    <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="1" />
+    <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="SUCURSAL" Type="Self.SUCURSAL" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="EMPRESA">
@@ -329,7 +359,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="LOTE_PRODUCTO_FK">
-    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="LOTE" Type="Self.LOTE" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="PRODUCTO">
@@ -341,7 +373,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="MENSAJERIA_OFERTA_FK">
-    <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="1" />
+    <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="MENSAJERIA" Type="Self.MENSAJERIA" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="OFERTA">
@@ -353,7 +387,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="MENSAJERIA_SUCURSAL_FK">
-    <End Role="SUCURSAL" Type="Self.SUCURSAL" Multiplicity="1" />
+    <End Role="SUCURSAL" Type="Self.SUCURSAL" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="MENSAJERIA" Type="Self.MENSAJERIA" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="SUCURSAL">
@@ -365,7 +401,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="REG_ERROR_MENSAJERIA_FK">
-    <End Role="MENSAJERIA" Type="Self.MENSAJERIA" Multiplicity="1" />
+    <End Role="MENSAJERIA" Type="Self.MENSAJERIA" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="REG_ERROR" Type="Self.REG_ERROR" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="MENSAJERIA">
@@ -377,7 +415,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="OFERTA_PRODUCTO_FK">
-    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="PRODUCTO">
@@ -389,7 +429,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="OFERTA_SUCURSAL_FK">
-    <End Role="SUCURSAL" Type="Self.SUCURSAL" Multiplicity="1" />
+    <End Role="SUCURSAL" Type="Self.SUCURSAL" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="SUCURSAL">
@@ -401,7 +443,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="REG_PRODUCTO_PRODUCTO_FK">
-    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="REG_PRODUCTO" Type="Self.REG_PRODUCTO" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="PRODUCTO">

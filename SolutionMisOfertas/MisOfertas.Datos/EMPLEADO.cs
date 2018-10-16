@@ -14,10 +14,9 @@ namespace MisOfertas.Datos
     
     public partial class EMPLEADO
     {
-        public int ID_EMP { get; set; }
         public string CARGO { get; set; }
         public string PERSONA_RUN { get; set; }
-        public int USUARIO_ID_USER { get; set; }
+        public string USUARIO_USERNAME { get; set; }
     
         public virtual PERSONA PERSONA { get; set; }
         public virtual USUARIO USUARIO { get; set; }

@@ -11,6 +11,6 @@ namespace MisOfertas.Negocio.Models
         public int IdEmpleado { get; set; }
         public string Cargo { get; set; }
         public string RunPersona { get; set; }
-        public int IdUsuario { get; set; }
+        public string Username { get; set; }
     }
 }

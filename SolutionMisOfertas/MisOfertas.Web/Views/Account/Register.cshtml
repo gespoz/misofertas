@@ -12,7 +12,7 @@
     });
 </script>
 
-@using (Html.BeginForm("Register", "Login", FormMethod.Post, new { @class = "form-horizontal" }))
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal" }))
 {
     @Html.ValidationSummary(true)
     <div class="col-md-7">
@@ -22,6 +22,7 @@
                 @Html.TextBoxFor(model => model.Run, new { @class = "form-control input-xxlarge",
                                     @onblur = "validarFormatoRut(this)", @onfocus = "limpiarFormatoRut(this)", @oninput = "validarInputRut(this)" })
                 @Html.ValidationMessageFor(model => model.Run, "", new { @style = "color:red" })
+                <script src="~/Scripts/ValidadorRut.js"></script>
             </div>
         </div>
 
@@ -63,7 +64,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Email, new { @class = "control-label col-sm-5" })
             <div class="col-sm-4">
-                @Html.TextAreaFor(model => model.Email, new { @class = "input-xxlarge form-control", @maxlength = "45" })
+                @Html.TextBoxFor(model => model.Email, new { @class = "input-xxlarge form-control", @maxlength = "45" })
                 @Html.ValidationMessageFor(model => model.Email, "", new { @style = "color:red" })
             </div>
         </div>
@@ -90,8 +91,7 @@
     </div>
     <div class="col-lg-11">
         <div class="form-actions form-actions-clean col-sm-offset-9">
-            <input type="submit" value="Registrar" class="btn btn-default" />
-            <input type="submit" value="Volver" class="btn btn-default" />
+            <input type="submit" value="Registrar" class="btn btn-primary" />
         </div>
     </div>
 }
@@ -134,4 +134,43 @@
         }
     </script>
 }
+
+    <style>
+        .btn.btn-primary {
+            background: #f0ad4e none repeat scroll 0 0;
+            border-color: #f0ad4e;
+            color: #ffffff;
+            font-size: 14px;
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            padding: 0;
+        }
+
+        .forgot {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .botto-text {
+            color: #ffffff;
+            font-size: 14px;
+            margin: auto;
+        }
+
+        .btn.btn-primary.reset {
+            background: #ff9900 none repeat scroll 0 0;
+        }
+
+        .back {
+            text-align: left;
+            margin-top: 10px;
+        }
+
+            .back a {
+                color: #444444;
+                font-size: 13px;
+                text-decoration: none;
+            }
+    </style>
 

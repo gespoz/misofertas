@@ -10,17 +10,17 @@
           <ScalarProperty Name="DESCUENTO" ColumnName="DESCUENTO" />
           <ScalarProperty Name="TOPE" ColumnName="TOPE" />
           <ScalarProperty Name="RUBRO" ColumnName="RUBRO" />
-          <ScalarProperty Name="CONSUMIDOR_ID_CONS" ColumnName="CONSUMIDOR_ID_CONS" />
+          <ScalarProperty Name="CONSUMIDOR_USERNAME" ColumnName="CONSUMIDOR_USERNAME" />
+          <ScalarProperty Name="CONSUMIDOR_RUN" ColumnName="CONSUMIDOR_RUN" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="CONSUMIDOR">
       <EntityTypeMapping TypeName="MisOfertasModel.CONSUMIDOR">
         <MappingFragment StoreEntitySet="CONSUMIDOR">
-          <ScalarProperty Name="ID_CONS" ColumnName="ID_CONS" />
           <ScalarProperty Name="PUNTOS" ColumnName="PUNTOS" />
-          <ScalarProperty Name="USUARIO_ID_USER" ColumnName="USUARIO_ID_USER" />
           <ScalarProperty Name="PERSONA_RUN" ColumnName="PERSONA_RUN" />
+          <ScalarProperty Name="USUARIO_USERNAME" ColumnName="USUARIO_USERNAME" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -32,7 +32,8 @@
           <ScalarProperty Name="FEC_VALORACION" ColumnName="FEC_VALORACION" />
           <ScalarProperty Name="VALORACION" ColumnName="VALORACION" />
           <ScalarProperty Name="OFERTA_ID_OFERTA" ColumnName="OFERTA_ID_OFERTA" />
-          <ScalarProperty Name="CONSUMIDOR_ID_CONS" ColumnName="CONSUMIDOR_ID_CONS" />
+          <ScalarProperty Name="CONSUMIDOR_USERNAME" ColumnName="CONSUMIDOR_USERNAME" />
+          <ScalarProperty Name="CONSUMIDOR_RUN" ColumnName="CONSUMIDOR_RUN" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -48,10 +49,9 @@
     <EntitySetMapping Name="EMPLEADO">
       <EntityTypeMapping TypeName="MisOfertasModel.EMPLEADO">
         <MappingFragment StoreEntitySet="EMPLEADO">
-          <ScalarProperty Name="ID_EMP" ColumnName="ID_EMP" />
           <ScalarProperty Name="CARGO" ColumnName="CARGO" />
           <ScalarProperty Name="PERSONA_RUN" ColumnName="PERSONA_RUN" />
-          <ScalarProperty Name="USUARIO_ID_USER" ColumnName="USUARIO_ID_USER" />
+          <ScalarProperty Name="USUARIO_USERNAME" ColumnName="USUARIO_USERNAME" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -83,9 +83,10 @@
           <ScalarProperty Name="MENSAJE" ColumnName="MENSAJE" />
           <ScalarProperty Name="CUPON" ColumnName="CUPON" />
           <ScalarProperty Name="IMG_OFERTA" ColumnName="IMG_OFERTA" />
-          <ScalarProperty Name="CONSUMIDOR_ID_CONS" ColumnName="CONSUMIDOR_ID_CONS" />
           <ScalarProperty Name="SUCURSAL_ID_SUCUR" ColumnName="SUCURSAL_ID_SUCUR" />
           <ScalarProperty Name="OFERTA_ID_OFERTA" ColumnName="OFERTA_ID_OFERTA" />
+          <ScalarProperty Name="CONSUMIDOR_USERNAME" ColumnName="CONSUMIDOR_USERNAME" />
+          <ScalarProperty Name="CONSUMIDOR_RUN" ColumnName="CONSUMIDOR_RUN" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -166,7 +167,6 @@
     <EntitySetMapping Name="USUARIO">
       <EntityTypeMapping TypeName="MisOfertasModel.USUARIO">
         <MappingFragment StoreEntitySet="USUARIO">
-          <ScalarProperty Name="ID_USER" ColumnName="ID_USER" />
           <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
           <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
           <ScalarProperty Name="PERFIL" ColumnName="PERFIL" />
