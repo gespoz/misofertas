@@ -19,9 +19,9 @@
         <h1 class="form-heading">login Form</h1>
         <div class="login-form">
             <div class="main-div">
-                <div class="panel">
-                    <h2>MISOFERTAS</h2>
-                    <p>Porfavor Ingrese su Usuario y Contraseña</p>
+                <div class="form-group">
+                    <img class="text-center" src="~/Images/bbar.png" width="300" height="70"/>
+                    @Html.Label("Porfavor Ingrese su Usuario y Contraseña")
                 </div>
                 @using (Html.BeginForm("Autherize", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
@@ -36,11 +36,13 @@
                             @Html.PasswordFor(m => m.Pass, new { @class = "form-control", id = "inputPassword", placeholder = "Password"})
                             @Html.ValidationMessageFor(m => m.Pass, "", new { @class = "text-danger" })
                         </div>
-                        <div class="forgot">
+                        <div class="form-group forgot">
                             @Html.DisplayFor(m => m.LoginErrorMessage, new { @class = "col-md-4 control-label field-validation-error" })
                             @Html.ActionLink("Registrarse", "Register")
                         </div>
-                        <button type="submit" class="btn btn-primary">Login</button>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </div>
                     </form>
                 }
             </div>

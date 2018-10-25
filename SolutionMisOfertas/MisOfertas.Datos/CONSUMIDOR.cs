@@ -16,7 +16,7 @@ namespace MisOfertas.Datos
     {
         public CONSUMIDOR()
         {
-            this.CERTIFICADO = new HashSet<CERTIFICADO>();
+            this.CERTIFICADO_EMITIDO = new HashSet<CERTIFICADO_EMITIDO>();
             this.DETALLE_OFERTA = new HashSet<DETALLE_OFERTA>();
             this.MENSAJERIA = new HashSet<MENSAJERIA>();
         }
@@ -25,7 +25,7 @@ namespace MisOfertas.Datos
         public string PERSONA_RUN { get; set; }
         public string USUARIO_USERNAME { get; set; }
     
-        public virtual ICollection<CERTIFICADO> CERTIFICADO { get; set; }
+        public virtual ICollection<CERTIFICADO_EMITIDO> CERTIFICADO_EMITIDO { get; set; }
         public virtual PERSONA PERSONA { get; set; }
         public virtual USUARIO USUARIO { get; set; }
         public virtual ICollection<DETALLE_OFERTA> DETALLE_OFERTA { get; set; }

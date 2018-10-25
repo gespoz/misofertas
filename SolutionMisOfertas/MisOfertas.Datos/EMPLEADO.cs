@@ -14,6 +14,7 @@ namespace MisOfertas.Datos
     
     public partial class EMPLEADO
     {
+        public Nullable<int> IDREFERENCIA { get; set; }
         public string CARGO { get; set; }
         public string PERSONA_RUN { get; set; }
         public string USUARIO_USERNAME { get; set; }

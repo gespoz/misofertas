@@ -55,13 +55,13 @@
     <Compile Include="CERTIFICADO.cs">
       <DependentUpon>MisOfertasModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="CERTIFICADO_EMITIDO.cs">
+      <DependentUpon>MisOfertasModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="CONSUMIDOR.cs">
       <DependentUpon>MisOfertasModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DETALLE_OFERTA.cs">
-      <DependentUpon>MisOfertasModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DETALLE_PRODUCTO.cs">
       <DependentUpon>MisOfertasModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EMPLEADO.cs">

@@ -26,9 +26,9 @@ namespace MisOfertas.Datos
         }
     
         public DbSet<CERTIFICADO> CERTIFICADO { get; set; }
+        public DbSet<CERTIFICADO_EMITIDO> CERTIFICADO_EMITIDO { get; set; }
         public DbSet<CONSUMIDOR> CONSUMIDOR { get; set; }
         public DbSet<DETALLE_OFERTA> DETALLE_OFERTA { get; set; }
-        public DbSet<DETALLE_PRODUCTO> DETALLE_PRODUCTO { get; set; }
         public DbSet<EMPLEADO> EMPLEADO { get; set; }
         public DbSet<EMPRESA> EMPRESA { get; set; }
         public DbSet<LOTE> LOTE { get; set; }

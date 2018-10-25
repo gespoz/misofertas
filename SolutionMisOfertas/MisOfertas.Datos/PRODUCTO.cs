@@ -16,7 +16,6 @@ namespace MisOfertas.Datos
     {
         public PRODUCTO()
         {
-            this.DETALLE_PRODUCTO = new HashSet<DETALLE_PRODUCTO>();
             this.LOTE = new HashSet<LOTE>();
             this.OFERTA = new HashSet<OFERTA>();
             this.REG_PRODUCTO = new HashSet<REG_PRODUCTO>();
@@ -28,13 +27,15 @@ namespace MisOfertas.Datos
         public System.DateTime FEC_INGRESO { get; set; }
         public string ESTADO { get; set; }
         public int STK_SEGURO { get; set; }
+        public int STK_SUCUR { get; set; }
         public string RUBRO { get; set; }
         public string DESC_RUBRO { get; set; }
         public int VALOR { get; set; }
+        public int SUCURSAL_ID_SUCUR { get; set; }
     
-        public virtual ICollection<DETALLE_PRODUCTO> DETALLE_PRODUCTO { get; set; }
         public virtual ICollection<LOTE> LOTE { get; set; }
         public virtual ICollection<OFERTA> OFERTA { get; set; }
+        public virtual SUCURSAL SUCURSAL { get; set; }
         public virtual ICollection<REG_PRODUCTO> REG_PRODUCTO { get; set; }
     }
 }

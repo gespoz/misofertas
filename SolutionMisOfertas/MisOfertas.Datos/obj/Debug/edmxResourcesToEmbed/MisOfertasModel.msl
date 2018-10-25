@@ -10,8 +10,18 @@
           <ScalarProperty Name="DESCUENTO" ColumnName="DESCUENTO" />
           <ScalarProperty Name="TOPE" ColumnName="TOPE" />
           <ScalarProperty Name="RUBRO" ColumnName="RUBRO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CERTIFICADO_EMITIDO">
+      <EntityTypeMapping TypeName="MisOfertasModel.CERTIFICADO_EMITIDO">
+        <MappingFragment StoreEntitySet="CERTIFICADO_EMITIDO">
+          <ScalarProperty Name="ID_CEMITIDO" ColumnName="ID_CEMITIDO" />
+          <ScalarProperty Name="DESCUENTO" ColumnName="DESCUENTO" />
+          <ScalarProperty Name="PTS_USADOS" ColumnName="PTS_USADOS" />
           <ScalarProperty Name="CONSUMIDOR_USERNAME" ColumnName="CONSUMIDOR_USERNAME" />
           <ScalarProperty Name="CONSUMIDOR_RUN" ColumnName="CONSUMIDOR_RUN" />
+          <ScalarProperty Name="CERTIFICADO_ID_CERT" ColumnName="CERTIFICADO_ID_CERT" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -37,18 +47,10 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="DETALLE_PRODUCTO">
-      <EntityTypeMapping TypeName="MisOfertasModel.DETALLE_PRODUCTO">
-        <MappingFragment StoreEntitySet="DETALLE_PRODUCTO">
-          <ScalarProperty Name="PRODUCTO_ID_PROD" ColumnName="PRODUCTO_ID_PROD" />
-          <ScalarProperty Name="SUCURSAL_ID_SUCUR" ColumnName="SUCURSAL_ID_SUCUR" />
-          <ScalarProperty Name="STK_SUCUR" ColumnName="STK_SUCUR" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="EMPLEADO">
       <EntityTypeMapping TypeName="MisOfertasModel.EMPLEADO">
         <MappingFragment StoreEntitySet="EMPLEADO">
+          <ScalarProperty Name="IDREFERENCIA" ColumnName="IDREFERENCIA" />
           <ScalarProperty Name="CARGO" ColumnName="CARGO" />
           <ScalarProperty Name="PERSONA_RUN" ColumnName="PERSONA_RUN" />
           <ScalarProperty Name="USUARIO_USERNAME" ColumnName="USUARIO_USERNAME" />
@@ -127,9 +129,11 @@
           <ScalarProperty Name="FEC_INGRESO" ColumnName="FEC_INGRESO" />
           <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
           <ScalarProperty Name="STK_SEGURO" ColumnName="STK_SEGURO" />
+          <ScalarProperty Name="STK_SUCUR" ColumnName="STK_SUCUR" />
           <ScalarProperty Name="RUBRO" ColumnName="RUBRO" />
           <ScalarProperty Name="DESC_RUBRO" ColumnName="DESC_RUBRO" />
           <ScalarProperty Name="VALOR" ColumnName="VALOR" />
+          <ScalarProperty Name="SUCURSAL_ID_SUCUR" ColumnName="SUCURSAL_ID_SUCUR" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

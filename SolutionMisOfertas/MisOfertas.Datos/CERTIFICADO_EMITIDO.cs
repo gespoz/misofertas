@@ -12,13 +12,16 @@ namespace MisOfertas.Datos
     using System;
     using System.Collections.Generic;
     
-    public partial class DETALLE_PRODUCTO
+    public partial class CERTIFICADO_EMITIDO
     {
-        public long PRODUCTO_ID_PROD { get; set; }
-        public int SUCURSAL_ID_SUCUR { get; set; }
-        public int STK_SUCUR { get; set; }
+        public int ID_CEMITIDO { get; set; }
+        public decimal DESCUENTO { get; set; }
+        public int PTS_USADOS { get; set; }
+        public string CONSUMIDOR_USERNAME { get; set; }
+        public string CONSUMIDOR_RUN { get; set; }
+        public int CERTIFICADO_ID_CERT { get; set; }
     
-        public virtual PRODUCTO PRODUCTO { get; set; }
-        public virtual SUCURSAL SUCURSAL { get; set; }
+        public virtual CERTIFICADO CERTIFICADO { get; set; }
+        public virtual CONSUMIDOR CONSUMIDOR { get; set; }
     }
 }

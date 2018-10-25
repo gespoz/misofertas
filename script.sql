@@ -1,4 +1,4 @@
---Seccion Borrado
+--SECCION BORRADO
 DROP TABLE certificado CASCADE CONSTRAINTS;
 DROP TABLE consumidor CASCADE CONSTRAINTS;
 DROP TABLE detalle_oferta CASCADE CONSTRAINTS;
@@ -14,6 +14,7 @@ DROP TABLE reg_error CASCADE CONSTRAINTS;
 DROP TABLE reg_producto CASCADE CONSTRAINTS;
 DROP TABLE sucursal CASCADE CONSTRAINTS;
 DROP TABLE usuario CASCADE CONSTRAINTS;
+DROP TABLE certificado_emitido CASCADE CONSTRAINTS;
 
 DROP SEQUENCE certificado_seq;
 DROP SEQUENCE consumidor_seq;
@@ -26,7 +27,9 @@ DROP SEQUENCE producto_seq;
 DROP SEQUENCE error_seq;
 DROP SEQUENCE caso_seq;
 DROP SEQUENCE sucursal_seq;
---Seccion Creacion Sequencias
+DROP SEQUENCE emitido_seq;
+
+--SECCION CREACION SEQUENCIAS
 CREATE SEQUENCE certificado_seq MINVALUE 1 START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE consumidor_seq MINVALUE 1 START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE oferta_seq MINVALUE 1 START WITH 1 INCREMENT BY 1;
@@ -38,19 +41,30 @@ CREATE SEQUENCE producto_seq MINVALUE 1 START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE error_seq MINVALUE 1 START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE caso_seq MINVALUE 1 START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE sucursal_seq MINVALUE 1 START WITH 1 INCREMENT BY 1;
---Seccion Creacion Tabla
+CREATE SEQUENCE emitido_seq MINVALUE 1 START WITH 1 INCREMENT BY 1;
+
+--SECCION CREACION TABLAS
 CREATE TABLE certificado (
-    id_cert               NUMBER(10) NOT NULL,
-    pts_min               NUMBER(7) NOT NULL,
-    pts_max               NUMBER(7) NOT NULL,
-    descuento             NUMBER(3, 1) NOT NULL,
-    tope                  NUMBER(9) NOT NULL,
-    rubro                 VARCHAR2(150) NOT NULL,
-    consumidor_username   VARCHAR2(25) NOT NULL,
-    consumidor_run        VARCHAR2(11) NOT NULL
+    id_cert     NUMBER(10) NOT NULL,
+    pts_min     NUMBER(7) NOT NULL,
+    pts_max     NUMBER(7) NOT NULL,
+    descuento   NUMBER(3,1) NOT NULL,
+    tope        NUMBER(9) NOT NULL,
+    rubro       VARCHAR2(150) NOT NULL
 );
 
 ALTER TABLE certificado ADD CONSTRAINT certificado_pk PRIMARY KEY ( id_cert );
+
+CREATE TABLE certificado_emitido (
+    id_cemitido           NUMBER(9) NOT NULL,
+    descuento             NUMBER(3,1) NOT NULL,
+    pts_usados            NUMBER(8) NOT NULL,
+    consumidor_username   VARCHAR2(25) NOT NULL,
+    consumidor_run        VARCHAR2(11) NOT NULL,
+    certificado_id_cert   NUMBER(10) NOT NULL
+);
+
+ALTER TABLE certificado_emitido ADD CONSTRAINT certificado_emitido_pk PRIMARY KEY ( id_cemitido );
 
 CREATE TABLE consumidor (
     puntos             NUMBER(6) NOT NULL,
@@ -59,13 +73,13 @@ CREATE TABLE consumidor (
 );
 
 ALTER TABLE consumidor ADD CONSTRAINT consumidor_pk PRIMARY KEY ( usuario_username,
-                                                                  persona_run );
+persona_run );
 
 CREATE TABLE detalle_oferta (
     id_det                NUMBER(8) NOT NULL,
     img_boleta            BLOB NOT NULL,
     fec_valoracion        DATE NOT NULL,
-    valoracion            NUMBER(3, 1) NOT NULL,
+    valoracion            NUMBER(3,1) NOT NULL,
     oferta_id_oferta      NUMBER(10) NOT NULL,
     consumidor_username   VARCHAR2(25) NOT NULL,
     consumidor_run        VARCHAR2(11) NOT NULL
@@ -73,26 +87,18 @@ CREATE TABLE detalle_oferta (
 
 ALTER TABLE detalle_oferta
     ADD CONSTRAINT detalle_oferta_pk PRIMARY KEY ( oferta_id_oferta,
-                                                   consumidor_username,
-                                                   consumidor_run );
-
-CREATE TABLE detalle_producto (
-    producto_id_prod    NUMBER(12) NOT NULL,
-    sucursal_id_sucur   NUMBER(8) NOT NULL,
-    stk_sucur           NUMBER(7) NOT NULL
-);
-
-ALTER TABLE detalle_producto ADD CONSTRAINT detalle_producto_pk PRIMARY KEY ( producto_id_prod,
-                                                                              sucursal_id_sucur );
+    consumidor_username,
+    consumidor_run );
 
 CREATE TABLE empleado (
+    idreferencia       NUMBER(8),
     cargo              VARCHAR2(25) NOT NULL,
     persona_run        VARCHAR2(11) NOT NULL,
     usuario_username   VARCHAR2(25) NOT NULL
 );
 
 ALTER TABLE empleado ADD CONSTRAINT empleado_pk PRIMARY KEY ( usuario_username,
-                                                              persona_run );
+persona_run );
 
 CREATE TABLE empresa (
     rut            VARCHAR2(18) NOT NULL,
@@ -132,8 +138,8 @@ CREATE TABLE oferta (
     fec_inicio          DATE NOT NULL,
     fec_termino         DATE NOT NULL,
     img_oferta          BLOB NOT NULL,
-    valoracion_total    NUMBER(3, 1) NOT NULL,
-    porc_desc           NUMBER(3, 1) NOT NULL,
+    valoracion_total    NUMBER(3,1) NOT NULL,
+    porc_desc           NUMBER(3,1) NOT NULL,
     sucursal_id_sucur   NUMBER(8) NOT NULL,
     producto_id_prod    NUMBER(12) NOT NULL
 );
@@ -146,22 +152,24 @@ CREATE TABLE persona (
     paterno   VARCHAR2(25) NOT NULL,
     materno   VARCHAR2(25),
     sexo      VARCHAR2(20),
-    email     VARCHAR2(35),
+    email     VARCHAR2(35) NOT NULL,
     fec_nac   DATE NOT NULL
 );
 
 ALTER TABLE persona ADD CONSTRAINT persona_pk PRIMARY KEY ( run );
 
 CREATE TABLE producto (
-    id_prod       NUMBER(12) NOT NULL,
-    nombre        VARCHAR2(25) NOT NULL,
-    desc_prod     VARCHAR2(200) NOT NULL,
-    fec_ingreso   DATE NOT NULL,
-    estado        CHAR(1) NOT NULL,
-    stk_seguro    NUMBER(7) NOT NULL,
-    rubro         VARCHAR2(25) NOT NULL,
-    desc_rubro    VARCHAR2(200) NOT NULL,
-    valor         NUMBER(9) NOT NULL
+    id_prod             NUMBER(12) NOT NULL,
+    nombre              VARCHAR2(25) NOT NULL,
+    desc_prod           VARCHAR2(200) NOT NULL,
+    fec_ingreso         DATE NOT NULL,
+    estado              CHAR(1) NOT NULL,
+    stk_seguro          NUMBER(7) NOT NULL,
+    stk_sucur           NUMBER(8) NOT NULL,
+    rubro               VARCHAR2(25) NOT NULL,
+    desc_rubro          VARCHAR2(200) NOT NULL,
+    valor               NUMBER(9) NOT NULL,
+    sucursal_id_sucur   NUMBER(8) NOT NULL
 );
 
 ALTER TABLE producto ADD CONSTRAINT producto_pk PRIMARY KEY ( id_prod );
@@ -202,12 +210,16 @@ CREATE TABLE usuario (
 
 ALTER TABLE usuario ADD CONSTRAINT usuario_pk PRIMARY KEY ( username );
 
---Seccion Foreign Key
-ALTER TABLE certificado
-    ADD CONSTRAINT certificado_consumidor_fk FOREIGN KEY ( consumidor_username,
-                                                           consumidor_run )
+--SECCION FOREIGN KEY
+ALTER TABLE certificado_emitido
+    ADD CONSTRAINT emitido_certificado_fk FOREIGN KEY ( certificado_id_cert )
+        REFERENCES certificado ( id_cert ) ON DELETE CASCADE;
+
+ALTER TABLE certificado_emitido
+    ADD CONSTRAINT certificado_emitido_fk FOREIGN KEY ( consumidor_username,
+    consumidor_run )
         REFERENCES consumidor ( usuario_username,
-                                persona_run ) ON DELETE CASCADE;
+        persona_run ) ON DELETE CASCADE;
 
 ALTER TABLE consumidor
     ADD CONSTRAINT consumidor_persona_fk FOREIGN KEY ( persona_run )
@@ -219,21 +231,13 @@ ALTER TABLE consumidor
 
 ALTER TABLE detalle_oferta
     ADD CONSTRAINT detalle_oferta_consumidor_fk FOREIGN KEY ( consumidor_username,
-                                                              consumidor_run )
+    consumidor_run )
         REFERENCES consumidor ( usuario_username,
-                                persona_run ) ON DELETE CASCADE;
+        persona_run ) ON DELETE CASCADE;
 
 ALTER TABLE detalle_oferta
     ADD CONSTRAINT detalle_oferta_oferta_fk FOREIGN KEY ( oferta_id_oferta )
         REFERENCES oferta ( id_oferta ) ON DELETE CASCADE;
-
-ALTER TABLE detalle_producto
-    ADD CONSTRAINT detalle_producto_producto_fk FOREIGN KEY ( producto_id_prod )
-        REFERENCES producto ( id_prod ) ON DELETE CASCADE;
-
-ALTER TABLE detalle_producto
-    ADD CONSTRAINT detalle_producto_sucursal_fk FOREIGN KEY ( sucursal_id_sucur )
-        REFERENCES sucursal ( id_sucur ) ON DELETE CASCADE;
 
 ALTER TABLE empleado
     ADD CONSTRAINT empleado_persona_fk FOREIGN KEY ( persona_run )
@@ -249,9 +253,9 @@ ALTER TABLE lote
 
 ALTER TABLE mensajeria
     ADD CONSTRAINT mensajeria_consumidor_fk FOREIGN KEY ( consumidor_username,
-                                                          consumidor_run )
+    consumidor_run )
         REFERENCES consumidor ( usuario_username,
-                                persona_run ) ON DELETE CASCADE;
+        persona_run ) ON DELETE CASCADE;
 
 ALTER TABLE mensajeria
     ADD CONSTRAINT mensajeria_oferta_fk FOREIGN KEY ( oferta_id_oferta )
@@ -267,6 +271,10 @@ ALTER TABLE oferta
 
 ALTER TABLE oferta
     ADD CONSTRAINT oferta_sucursal_fk FOREIGN KEY ( sucursal_id_sucur )
+        REFERENCES sucursal ( id_sucur ) ON DELETE CASCADE;
+
+ALTER TABLE producto
+    ADD CONSTRAINT producto_sucursal_fk FOREIGN KEY ( sucursal_id_sucur )
         REFERENCES sucursal ( id_sucur ) ON DELETE CASCADE;
 
 ALTER TABLE reg_error
@@ -372,6 +380,15 @@ BEGIN
 END;
 /
 
+CREATE OR REPLACE TRIGGER certemitido_tg
+    BEFORE INSERT ON certificado_emitido FOR EACH ROW
+DECLARE
+BEGIN
+    IF :NEW.id_cemitido IS NULL THEN
+        :new.id_cemitido := emitido_seq.NEXTVAL;
+    END IF;
+END;
+/
 --Seccion Insert
 INSERT INTO persona VALUES('19308344-7','Gabriel','Espoz','Aliaga','Masculino','g.espoz@alumnos.duoc.cl',TO_DATE('30/04/1996','dd/mm/yyyy'));
 INSERT INTO usuario VALUES('g.espoz','123','Consumidor');

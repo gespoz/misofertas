@@ -58,9 +58,9 @@
     <Compile Include="Infrastructure\Context\MoContext.cs" />
     <Compile Include="Infrastructure\IUserContext.cs" />
     <Compile Include="Models\Certificado.cs" />
+    <Compile Include="Models\CertificadoEmitido.cs" />
     <Compile Include="Models\Consumidor.cs" />
     <Compile Include="Models\DetalleOferta.cs" />
-    <Compile Include="Models\DetalleProducto.cs" />
     <Compile Include="Models\Empleado.cs" />
     <Compile Include="Models\Empresa.cs" />
     <Compile Include="Models\Lote.cs" />

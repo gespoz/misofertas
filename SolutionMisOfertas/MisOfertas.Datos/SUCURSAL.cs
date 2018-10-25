@@ -16,9 +16,9 @@ namespace MisOfertas.Datos
     {
         public SUCURSAL()
         {
-            this.DETALLE_PRODUCTO = new HashSet<DETALLE_PRODUCTO>();
             this.MENSAJERIA = new HashSet<MENSAJERIA>();
             this.OFERTA = new HashSet<OFERTA>();
+            this.PRODUCTO = new HashSet<PRODUCTO>();
         }
     
         public int ID_SUCUR { get; set; }
@@ -28,9 +28,9 @@ namespace MisOfertas.Datos
         public string COMUNA { get; set; }
         public string EMPRESA_RUT { get; set; }
     
-        public virtual ICollection<DETALLE_PRODUCTO> DETALLE_PRODUCTO { get; set; }
         public virtual EMPRESA EMPRESA { get; set; }
         public virtual ICollection<MENSAJERIA> MENSAJERIA { get; set; }
         public virtual ICollection<OFERTA> OFERTA { get; set; }
+        public virtual ICollection<PRODUCTO> PRODUCTO { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace MisOfertas.Datos.Interfaces
         DbSet<CERTIFICADO> Certificado { get; set; }
         DbSet<CONSUMIDOR> Consumidor { get; set; }
         DbSet<DETALLE_OFERTA> DetalleOferta { get; set; }
-        DbSet<DETALLE_PRODUCTO> DetalleProducto { get; set; }
+        DbSet<CERTIFICADO_EMITIDO> CertificadoEmitido { get; set; }
         DbSet<EMPLEADO> Empleado { get; set; }
         DbSet<EMPRESA> Empresa { get; set; }
         DbSet<LOTE> Lote { get; set; }

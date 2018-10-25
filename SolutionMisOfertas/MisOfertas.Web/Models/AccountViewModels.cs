@@ -30,6 +30,8 @@ namespace MisOfertas.Web.Models
         [Required]
         public string Sexo { get; set; }
         [Required]
+        [RegularExpression(@"^[0-9a-zA-Z]([-\.\w]*[0-9a-zA-Z])*@(ua)\.(es)$",
+            ErrorMessage = "Formarto de correo no corresponde.")]
         public string Email { get; set; }
 
         [Required]

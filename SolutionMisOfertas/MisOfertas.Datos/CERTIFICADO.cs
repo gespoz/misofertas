@@ -14,15 +14,18 @@ namespace MisOfertas.Datos
     
     public partial class CERTIFICADO
     {
+        public CERTIFICADO()
+        {
+            this.CERTIFICADO_EMITIDO = new HashSet<CERTIFICADO_EMITIDO>();
+        }
+    
         public int ID_CERT { get; set; }
         public int PTS_MIN { get; set; }
         public int PTS_MAX { get; set; }
         public decimal DESCUENTO { get; set; }
         public int TOPE { get; set; }
         public string RUBRO { get; set; }
-        public string CONSUMIDOR_USERNAME { get; set; }
-        public string CONSUMIDOR_RUN { get; set; }
     
-        public virtual CONSUMIDOR CONSUMIDOR { get; set; }
+        public virtual ICollection<CERTIFICADO_EMITIDO> CERTIFICADO_EMITIDO { get; set; }
     }
 }

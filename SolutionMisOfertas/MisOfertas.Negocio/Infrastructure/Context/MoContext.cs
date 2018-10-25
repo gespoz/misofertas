@@ -50,7 +50,7 @@ namespace MisOfertas.Negocio.Infrastructure.Context
             }
         }
 
-        public DbSet<DETALLE_PRODUCTO> DetalleProducto
+        public DbSet<CERTIFICADO_EMITIDO> CertificadoEmitido
         {
             get
             {

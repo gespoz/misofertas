@@ -14,8 +14,10 @@ namespace MisOfertas.Negocio.Models
         public DateTime FecIngreso { get; set; }
         public string Estado { get; set; }
         public int StkSeguro { get; set; }
+        public int StkSucursal { get; set; }
         public string Rubro { get; set; }
         public string DescRubro { get; set; }
         public int Valor { get; set; }
+        public int IdSucursal { get; set; }
     }
 }
