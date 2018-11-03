@@ -59,7 +59,7 @@ namespace MisOfertas.Web.Controllers
                 Nombre = model.Nombre,
                 Paterno = model.Paterno,
                 Materno = model.Materno,
-                Sexo = model.Sexo,
+                Sexo = model.SexoReg.ToString(),
                 FecNac = model.Fecnac,
                 Email = model.Email
             };
@@ -88,5 +88,6 @@ namespace MisOfertas.Web.Controllers
                 return View("Register", model);
             }
         }
+        
     }
 }

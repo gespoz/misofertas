@@ -31,7 +31,7 @@ namespace MisOfertas.Web.Models
         public string Sexo { get; set; }
         [Required]
         [RegularExpression(@"^[0-9a-zA-Z]([-\.\w]*[0-9a-zA-Z])*@(ua)\.(es)$",
-            ErrorMessage = "Formarto de correo no corresponde.")]
+        ErrorMessage = "Formarto de correo no corresponde.")]
         public string Email { get; set; }
 
         [Required]
@@ -50,5 +50,13 @@ namespace MisOfertas.Web.Models
 
         public string Perfil { get; set; }
         public int Puntos { get; set; }
+
+        public SexoRegistro SexoReg;
+    }
+
+    public enum SexoRegistro
+    {
+        Mujer,
+        Hombre
     }
 }

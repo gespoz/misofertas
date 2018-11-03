@@ -49,15 +49,15 @@
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.Fecnac, "Nacimiento", new { @class = "control-label col-sm-5" })
-            <div class="col-sm-6">
-                @Html.EditorFor(model => model.Fecnac, new { @class = "input-xxlarge form-control datepicker" })
+            <div class="col-sm-4">
+                @Html.EditorFor(model => model.Fecnac, new { htmlAttributes = new { @class = "form-control input-xxlarge datepicker" } })
                 @Html.ValidationMessageFor(model => model.Fecnac, "", new { @style = "color:red" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.Sexo, new { @class = "control-label col-sm-5" })
             <div class="col-sm-4">
-                @Html.TextBoxFor(model => model.Sexo, new { @class = "input-xxlarge form-control", @maxlength = "45" })
+                @Html.EnumDropDownListFor(model => model.SexoReg,new { @class = "input-xxlarge form-control", @maxlength = "45" })
                 @Html.ValidationMessageFor(model => model.Sexo, "", new { @style = "color:red" })
             </div>
         </div>
@@ -92,6 +92,7 @@
     <div class="col-lg-11">
         <div class="form-actions form-actions-clean col-sm-offset-9">
             <input type="submit" value="Registrar" class="btn btn-primary" />
+            <input type="button" value="Volver" onclick="history.back();" class="btn btn-primary" />
         </div>
     </div>
 }
@@ -141,7 +142,7 @@
             border-color: #f0ad4e;
             color: #ffffff;
             font-size: 14px;
-            width: 100%;
+            width: 40%;
             height: 50px;
             line-height: 50px;
             padding: 0;
