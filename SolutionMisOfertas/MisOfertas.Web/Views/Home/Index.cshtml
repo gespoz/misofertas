@@ -53,61 +53,43 @@
                     <input type="number" class="form-control" min="1" max="10" />
                 </div>
                 <div class="form-actions form-actions-clean col-sm-offset-3">
-                    <input type="submit" value="Buscar" class="btn btn-primary" />
+                    <input type="submit" value="Buscar" class="btn btn-group" />
                 </div>
             </div>
         </fieldset>
         <hr />
+
         <!-- Page Features -->
         <div class="row text-center">
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card">
-                    <img class="card-img-top" src="http://placehold.it/250x250" alt="">
-                    <div class="card-body">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="#" class="btn btn-primary">More!</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card">
-                    <img class="card-img-top" src="http://placehold.it/250x250" alt="">
-                    <div class="card-body">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente.</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="#" class="btn btn-primary">More!</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card">
-                    <img class="card-img-top" src="http://placehold.it/250x250" alt="">
-                    <div class="card-body">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="#" class="btn btn-primary">More!</a>
+            @foreach (var item in Model.OfertasTabla)
+            {
+
+                var img = String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(item.Imagen));
+                var estado = "N/A";
+                if (item.Disponible == "T")
+                {
+                    estado = "Disponible";
+                }
+                else
+                {
+                    estado = "No Disponible";
+                }
+
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card">
+                        <img class="card-img-top" src="@img" alt="">
+                        <div class="card-body">
+                            <h4 class="card-title">@item.Nombre</h4>
+                            <p class="card-text">Valoracion: @item.Valoracion</p>
+                            <p class="card-text">Estado: @estado</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="btn btn-primary">Mas!</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card">
-                    <img class="card-img-top" src="http://placehold.it/250x250" alt="">
-                    <div class="card-body">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa.</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="#" class="btn btn-primary">More!</a>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
         <!-- /.row -->
     </div>
@@ -125,7 +107,6 @@
     <script src="Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
 <style>
     .btn.btn-primary {
         background: #f0ad4e none repeat scroll 0 0;
@@ -164,4 +145,5 @@
             text-decoration: none;
         }
 </style>
+
 

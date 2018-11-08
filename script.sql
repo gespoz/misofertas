@@ -1,3 +1,8 @@
+/* CREACION DE DIRECTORIO EN USUARIO SYSTEM DANDOLE PRIVILEGIOS A USUARIO MISOFERTAS
+SELECT * FROM ALL_DIRECTORIES;
+GRANT READ, WRITE, EXECUTE ON DIRECTORY DIR_IMG TO misofertas;
+CREATE DIRECTORY DIR_IMG AS 'D:\oraclexe\';
+*/
 --SECCION BORRADO
 DROP TABLE certificado CASCADE CONSTRAINTS;
 DROP TABLE consumidor CASCADE CONSTRAINTS;
@@ -390,6 +395,93 @@ BEGIN
 END;
 /
 --Seccion Insert
-INSERT INTO persona VALUES('19308344-7','Gabriel','Espoz','Aliaga','Masculino','g.espoz@alumnos.duoc.cl',TO_DATE('30/04/1996','dd/mm/yyyy'));
-INSERT INTO usuario VALUES('g.espoz','123','Consumidor');
+INSERT INTO persona VALUES('19308344-7','Gabriel','Espoz','Aliaga','Hombre','g.espoz@alumnos.duoc.cl',TO_DATE('30/04/1996','dd/mm/yyyy'));
+INSERT INTO persona VALUES('19512174-5','Juan','Pereira','Gomez','Hombre','j.pereira@gmail.cl',TO_DATE('04/01/1992','dd/mm/yyyy'));
+INSERT INTO persona VALUES('20850287-5','Maria','Vasquez','Muñoz','Mujer','m.vasquez@gmail.cl',TO_DATE('11/12/1993','dd/mm/yyyy'));
+INSERT INTO persona VALUES('12924362-7','Joaquin','Nunez','Philip','Hombre','j.nunez@gmail.cl',TO_DATE('23/10/1990','dd/mm/yyyy'));
+INSERT INTO persona VALUES('21237525-k','Paula','Ramirez','Duran','Mujer','p.ramirez@gmail.cl',TO_DATE('27/04/1997','dd/mm/yyyy'));
+
+INSERT INTO usuario VALUES('g.espoz','123','CONSUMIDOR');
+INSERT INTO usuario VALUES('j.pereira','123','CONSUMIDOR');
+INSERT INTO usuario VALUES('m.vasquez','qwe','CONSUMIDOR');
+INSERT INTO usuario VALUES('j.nunez','qwe','CONSUMIDOR');
+INSERT INTO usuario VALUES('p.ramirez','123','CONSUMIDOR');
+
 INSERT INTO consumidor VALUES(0,'19308344-7','g.espoz');
+INSERT INTO consumidor VALUES(0,'19512174-5','j.pereira');
+INSERT INTO consumidor VALUES(0,'20850287-5','m.vasquez');
+INSERT INTO consumidor VALUES(0,'12924362-7','j.nunez');
+INSERT INTO consumidor VALUES(0,'21237525-k','p.ramirez');
+
+INSERT INTO certificado(pts_min,pts_max,descuento,tope,rubro) VALUES(0, 100, 0.1, 1000000, 'Alimentos');
+INSERT INTO certificado(pts_min,pts_max,descuento,tope,rubro) VALUES(101, 500, 0.1, 150000, 'Electronica');
+INSERT INTO certificado(pts_min,pts_max,descuento,tope,rubro) VALUES(500, 1000, 0.2, 300000, 'Ropa');
+
+INSERT INTO empresa VALUES('77261280-k', 'Falabella', 'Loper Davila 128', 'SA');
+
+INSERT INTO sucursal(nombre,direccion,fono,comuna,empresa_rut) VALUES('Fala1', 'Simon 342', '56423241', 'San Miguel', '77261280-k');
+
+INSERT INTO producto(nombre,desc_prod,fec_ingreso,estado,stk_seguro,stk_sucur,rubro,desc_rubro,valor,sucursal_id_sucur) 
+VALUES('Trensito', 'Chocolate 30% cacao, con harta azucar', TO_DATE('03/04/2018','dd/mm/yyyy'), 'T', 10, 20, 'Alimento', 'Perecible', 2100,1);
+INSERT INTO producto(nombre,desc_prod,fec_ingreso,estado,stk_seguro,stk_sucur,rubro,desc_rubro,valor,sucursal_id_sucur) 
+VALUES('Toddy', 'Galletas con chips de chocolate', TO_DATE('17/04/2018','dd/mm/yyyy'), 'T', 10, 20, 'Alimento', 'Perecible', 1500,1);
+INSERT INTO producto(nombre,desc_prod,fec_ingreso,estado,stk_seguro,stk_sucur,rubro,desc_rubro,valor,sucursal_id_sucur) 
+VALUES('Notebook Intel', 'Computador Dell', TO_DATE('17/04/2018','dd/mm/yyyy'), 'T', 10, 20, 'Electronica', 'No Perecible', 250000,1);
+INSERT INTO producto(nombre,desc_prod,fec_ingreso,estado,stk_seguro,stk_sucur,rubro,desc_rubro,valor,sucursal_id_sucur) 
+VALUES('Jeans', 'Pantalones Lee', TO_DATE('17/04/2018','dd/mm/yyyy'), 'T', 10, 20, 'Ropa', 'No Perecible', 12000,1);
+
+SET serveroutput ON
+DECLARE 
+  v_blob BLOB;
+  v_bfile BFILE;
+BEGIN
+INSERT INTO oferta(descripcion,fec_inicio,fec_termino,img_oferta,valoracion_total,porc_desc,sucursal_id_sucur,producto_id_prod) 
+VALUES ('Oferta con un 10% de descuento',TO_DATE('06/11/2018','dd/mm/yyyy'), TO_DATE('17/06/2018','dd/mm/yyyy'),EMPTY_BLOB(),7,0.1,1,1) RETURNING img_oferta INTO v_blob;
+  v_bfile := BFILENAME('DIR_IMG', 'chocolate.jpg');
+DBMS_LOB.OPEN(v_bfile, DBMS_LOB.LOB_READONLY);
+  DBMS_LOB.LOADFROMFILE(v_blob, v_bfile, SYS.DBMS_LOB.GETLENGTH(v_bfile));
+  DBMS_LOB.CLOSE(v_bfile);
+  COMMIT;
+END;
+
+SET serveroutput ON
+DECLARE 
+  v_blob BLOB;
+  v_bfile BFILE;
+BEGIN
+INSERT INTO oferta(descripcion,fec_inicio,fec_termino,img_oferta,valoracion_total,porc_desc,sucursal_id_sucur,producto_id_prod) 
+VALUES ('Oferta con un 10% de descuento',TO_DATE('06/11/2018','dd/mm/yyyy'), TO_DATE('17/06/2018','dd/mm/yyyy'),EMPTY_BLOB(),5,0.1,1,2) RETURNING img_oferta INTO v_blob;
+  v_bfile := BFILENAME('DIR_IMG', 'galleta.jpg');
+DBMS_LOB.OPEN(v_bfile, DBMS_LOB.LOB_READONLY);
+  DBMS_LOB.LOADFROMFILE(v_blob, v_bfile, SYS.DBMS_LOB.GETLENGTH(v_bfile));
+  DBMS_LOB.CLOSE(v_bfile);
+  COMMIT;
+END;
+
+SET serveroutput ON
+DECLARE 
+  v_blob BLOB;
+  v_bfile BFILE;
+BEGIN
+INSERT INTO oferta(descripcion,fec_inicio,fec_termino,img_oferta,valoracion_total,porc_desc,sucursal_id_sucur,producto_id_prod) 
+VALUES ('Oferta con un 15% de descuento',TO_DATE('06/11/2018','dd/mm/yyyy'), TO_DATE('17/06/2018','dd/mm/yyyy'),EMPTY_BLOB(),5,0.15,1,3) RETURNING img_oferta INTO v_blob;
+  v_bfile := BFILENAME('DIR_IMG', 'notebook.jpg');
+DBMS_LOB.OPEN(v_bfile, DBMS_LOB.LOB_READONLY);
+  DBMS_LOB.LOADFROMFILE(v_blob, v_bfile, SYS.DBMS_LOB.GETLENGTH(v_bfile));
+  DBMS_LOB.CLOSE(v_bfile);
+  COMMIT;
+END;
+
+SET serveroutput ON
+DECLARE 
+  v_blob BLOB;
+  v_bfile BFILE;
+BEGIN
+INSERT INTO oferta(descripcion,fec_inicio,fec_termino,img_oferta,valoracion_total,porc_desc,sucursal_id_sucur,producto_id_prod) 
+VALUES ('Oferta con un 15% de descuento',TO_DATE('06/11/2018','dd/mm/yyyy'), TO_DATE('17/06/2018','dd/mm/yyyy'),EMPTY_BLOB(),10,0.15,1,4) RETURNING img_oferta INTO v_blob;
+  v_bfile := BFILENAME('DIR_IMG', 'blue.jpg');
+DBMS_LOB.OPEN(v_bfile, DBMS_LOB.LOB_READONLY);
+  DBMS_LOB.LOADFROMFILE(v_blob, v_bfile, SYS.DBMS_LOB.GETLENGTH(v_bfile));
+  DBMS_LOB.CLOSE(v_bfile);
+  COMMIT;
+END;
