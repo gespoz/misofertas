@@ -29,11 +29,11 @@
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <form id="Login">
                         <div class="form-group">
-                            @Html.TextBoxFor(m => m.User, new { @class = "form-control", id = "inputEmail", placeholder = "Username" })
+                            @Html.TextBoxFor(m => m.User, new { @class = "form-control", id = "inputEmail", placeholder = "Username", @maxlength = "25" })
                             @Html.ValidationMessageFor(m => m.User, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group">
-                            @Html.PasswordFor(m => m.Pass, new { @class = "form-control", id = "inputPassword", placeholder = "Password"})
+                            @Html.PasswordFor(m => m.Pass, new { @class = "form-control", id = "inputPassword", placeholder = "Password", @maxlength = "45" })
                             @Html.ValidationMessageFor(m => m.Pass, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group forgot">

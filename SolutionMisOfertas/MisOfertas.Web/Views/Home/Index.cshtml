@@ -43,19 +43,23 @@
         <center><img class="text-center" src="~/Images/bbar.png" width="500" height="110" /></center>
         <hr />
         <fieldset>
-            <div class="form-group">
-                @Html.Label("Rubro", "Rubro:", new { @class = "col-md-1" })
-                <div class="col-md-2">
-                    @Html.EnumDropDownListFor(m => m.RubroReg, new { @class = "form-control" })
+            @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+            {
+                <div class="form-group">
+                    @Html.Label("Rubro", "Rubro:", new { @class = "col-md-1" })
+                    <div class="col-md-2">
+                        @Html.EnumDropDownListFor(m => m.RubroReg, new { @class = "form-control" })
+                    </div>
+                    @Html.Label("Valoracion", "Valoracion:", new { @class = "col-md-1"})
+                    <div class="col-md-1">
+                        @Html.EditorFor(m=>m.Valoracion, new { htmlAttributes = new { @type = "number", @class = "form-control", @min = "0", @max = "5", @step = "1", @value = "0" } })
+                        @*<input type="number" name="Valor" class="form-control" min="1" max="5" />*@
+                    </div>
+                    <div class="form-actions form-actions-clean col-sm-offset-3">
+                        <input type="submit" value="Buscar" class="btn btn-group" />
+                    </div>
                 </div>
-                @Html.Label("Valoracion", "Valoracion:", new { @class = "col-md-1" })
-                <div class="col-md-1">
-                    <input type="number" class="form-control" min="1" max="10" />
-                </div>
-                <div class="form-actions form-actions-clean col-sm-offset-3">
-                    <input type="submit" value="Buscar" class="btn btn-group" />
-                </div>
-            </div>
+            }
         </fieldset>
         <hr />
 
@@ -74,7 +78,6 @@
                 {
                     estado = "No Disponible";
                 }
-
 
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="card">

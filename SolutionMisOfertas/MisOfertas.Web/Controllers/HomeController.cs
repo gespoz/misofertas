@@ -48,8 +48,52 @@ namespace MisOfertas.Web.Controllers
                     Nombre = item.Y.NOMBRE
                 }).ToList();
                 return lista;
+            }           
+        }
+
+        private List<OfertasHome> getOfertasFiltroTodos(int valoracion)
+        {
+            using (var db = new MisOfertas.Datos.MisOfertasEntities())
+            {
+                var lista = db.OFERTA.Join(db.PRODUCTO, x => x.PRODUCTO_ID_PROD, y => y.ID_PROD, (x, y) => new { X = x, Y = y }).Where(x=>x.X.VALORACION_TOTAL == valoracion).Select(item => new OfertasHome()
+                {
+                    Imagen = item.X.IMG_OFERTA,
+                    Valoracion = item.X.VALORACION_TOTAL,
+                    Disponible = item.Y.ESTADO,
+                    Nombre = item.Y.NOMBRE
+                }).ToList();
+                return lista;
             }
-            
+        }
+
+        private List<OfertasHome> getOfertasFiltroTodosRubro(string rubro)
+        {
+            using (var db = new MisOfertas.Datos.MisOfertasEntities())
+            {
+                var lista = db.OFERTA.Join(db.PRODUCTO, x => x.PRODUCTO_ID_PROD, y => y.ID_PROD, (x, y) => new { X = x, Y = y }).Where(x => x.Y.RUBRO == rubro).Select(item => new OfertasHome()
+                {
+                    Imagen = item.X.IMG_OFERTA,
+                    Valoracion = item.X.VALORACION_TOTAL,
+                    Disponible = item.Y.ESTADO,
+                    Nombre = item.Y.NOMBRE
+                }).ToList();
+                return lista;
+            }
+        }
+
+        private List<OfertasHome> getOfertasFiltro(int valoracion, string rubro)
+        {
+            using (var db = new MisOfertas.Datos.MisOfertasEntities())
+            {
+                var lista = db.OFERTA.Join(db.PRODUCTO, x => x.PRODUCTO_ID_PROD, y => y.ID_PROD, (x, y) => new { X = x, Y = y }).Where(x => x.X.VALORACION_TOTAL == valoracion && x.Y.RUBRO == rubro).Select(item => new OfertasHome()
+                {
+                    Imagen = item.X.IMG_OFERTA,
+                    Valoracion = item.X.VALORACION_TOTAL,
+                    Disponible = item.Y.ESTADO,
+                    Nombre = item.Y.NOMBRE
+                }).ToList();
+                return lista;
+            }
         }
 
         public static Image ConvertirImagen(object bytes)
@@ -62,6 +106,84 @@ namespace MisOfertas.Web.Controllers
             MemoryStream mem = new MemoryStream(imgArray);
 
             return Image.FromStream(mem);
+        }
+        
+        [HttpPost]
+        public ActionResult Index(MisOfertas.Web.Models.HomeView model)
+        {
+            var m = new Models.HomeView()
+            {
+                FechaValoracion = DateTime.Now,
+                OfertasTabla = new List<Models.OfertasHome>()
+            };
+
+            if (model.RubroReg == 0)
+            {
+                if (model.Valoracion == 0)
+                {
+                    var tabla = getOfertas();
+
+                    foreach (var l in tabla)
+                    {
+                        m.OfertasTabla.Add(new Models.OfertasHome
+                        {
+                            Imagen = l.Imagen,
+                            Disponible = l.Disponible,
+                            Nombre = l.Nombre,
+                            Valoracion = l.Valoracion
+                        });
+                    }
+                }
+                else
+                {
+                    var tabla = getOfertasFiltroTodos(model.Valoracion);
+
+                    foreach (var l in tabla)
+                    {
+                        m.OfertasTabla.Add(new Models.OfertasHome
+                        {
+                            Imagen = l.Imagen,
+                            Disponible = l.Disponible,
+                            Nombre = l.Nombre,
+                            Valoracion = l.Valoracion
+                        });
+                    }
+                }
+            }
+            else if (model.RubroReg != 0)
+            {
+                if (model.Valoracion == 0)
+                {
+                    var tabla = getOfertasFiltroTodosRubro(model.RubroReg.ToString());
+
+                    foreach (var l in tabla)
+                    {
+                        m.OfertasTabla.Add(new Models.OfertasHome
+                        {
+                            Imagen = l.Imagen,
+                            Disponible = l.Disponible,
+                            Nombre = l.Nombre,
+                            Valoracion = l.Valoracion
+                        });
+                    }
+                }
+                else
+                {
+                    var tabla = getOfertasFiltro(model.Valoracion,model.RubroReg.ToString());
+
+                    foreach (var l in tabla)
+                    {
+                        m.OfertasTabla.Add(new Models.OfertasHome
+                        {
+                            Imagen = l.Imagen,
+                            Disponible = l.Disponible,
+                            Nombre = l.Nombre,
+                            Valoracion = l.Valoracion
+                        });
+                    }
+                }
+            }
+            return View(m);
         }
 
         public ActionResult About()

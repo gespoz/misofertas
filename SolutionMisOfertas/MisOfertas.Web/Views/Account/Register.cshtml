@@ -19,8 +19,13 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Run, new { @class = "control-label col-sm-5" })
             <div class="col-sm-4">
-                @Html.TextBoxFor(model => model.Run, new { @class = "form-control input-xxlarge",
-                                    @onblur = "validarFormatoRut(this)", @onfocus = "limpiarFormatoRut(this)", @oninput = "validarInputRut(this)" })
+                @Html.TextBoxFor(model => model.Run, new
+           {
+               @class = "form-control input-xxlarge",
+               @onblur = "validarFormatoRut(this)",
+               @onfocus = "limpiarFormatoRut(this)",
+               @oninput = "validarInputRut(this)"
+           })
                 @Html.ValidationMessageFor(model => model.Run, "", new { @style = "color:red" })
                 <script src="~/Scripts/ValidadorRut.js"></script>
             </div>
@@ -29,21 +34,21 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Nombre, new { @class = "control-label col-sm-5" })
             <div class="col-sm-4">
-                @Html.TextBoxFor(model => model.Nombre, new { @class = "input-xxlarge form-control", @maxlength = "45" })
+                @Html.TextBoxFor(model => model.Nombre, new { @class = "input-xxlarge form-control", @maxlength = "25" })
                 @Html.ValidationMessageFor(model => model.Nombre, "", new { @style = "color:red" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.Paterno, "Apellido Paterno", new { @class = "control-label col-sm-5" })
             <div class="col-sm-4">
-                @Html.TextBoxFor(model => model.Paterno, new { @class = "input-xxlarge form-control", @maxlength = "45", })
+                @Html.TextBoxFor(model => model.Paterno, new { @class = "input-xxlarge form-control", @maxlength = "25", })
                 @Html.ValidationMessageFor(model => model.Paterno, "", new { @style = "color:red" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.Materno, "Apellido Materno", new { @class = "control-label col-sm-5" })
             <div class="col-sm-4">
-                @Html.TextBoxFor(model => model.Materno, new { @class = "input-xxlarge form-control", @maxlength = "45", })
+                @Html.TextBoxFor(model => model.Materno, new { @class = "input-xxlarge form-control", @maxlength = "25", })
                 @Html.ValidationMessageFor(model => model.Materno, "", new { @style = "color:red" })
             </div>
         </div>
@@ -57,14 +62,14 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Sexo, new { @class = "control-label col-sm-5" })
             <div class="col-sm-4">
-                @Html.EnumDropDownListFor(model => model.SexoReg,new { @class = "input-xxlarge form-control", @maxlength = "45" })
-                @Html.ValidationMessageFor(model => model.Sexo, "", new { @style = "color:red" })
+                @Html.EnumDropDownListFor(model => model.SexoReg, new { @class = "input-xxlarge form-control", @maxlength = "45" })
+                @Html.ValidationMessageFor(model => model.SexoReg, "Se debe seleccionar un sexo.", new { @style = "color:red" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.Email, new { @class = "control-label col-sm-5" })
             <div class="col-sm-4">
-                @Html.TextBoxFor(model => model.Email, new { @class = "input-xxlarge form-control", @maxlength = "45" })
+                @Html.TextBoxFor(model => model.Email, new { @class = "input-xxlarge form-control", @maxlength = "35" })
                 @Html.ValidationMessageFor(model => model.Email, "", new { @style = "color:red" })
             </div>
         </div>
@@ -73,7 +78,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.User, "Usuario", new { @class = "control-label col-sm-4" })
             <div class="col-sm-6">
-                @Html.TextBoxFor(model => model.User, new { @class = "input-xxlarge form-control", @maxlength = "45" })
+                @Html.TextBoxFor(model => model.User, new { @class = "input-xxlarge form-control", @maxlength = "25" })
                 @Html.ValidationMessageFor(model => model.User, "", new { @style = "color:red" })
             </div>
         </div>
@@ -85,11 +90,11 @@
                 @Html.ValidationMessageFor(model => model.Pass, "", new { @style = "color:red" })
             </div>
         </div>
+        <div class="col-sm-8">
+            @Html.DisplayFor(m => m.LoginErrorMessage, new { @class = "col-lg-8 control-label field-validation-error" })
+        </div>
     </div>
-    <div class="form-group">
-        @Html.DisplayFor(m => m.LoginErrorMessage, new { @class = "col-md-4 control-label field-validation-error" })
-    </div>
-    <div class="col-lg-11">
+    <div class="col-lg-11">    
         <div class="form-actions form-actions-clean col-sm-offset-9">
             <input type="submit" value="Registrar" class="btn btn-primary" />
             <input type="button" value="Volver" onclick="history.back();" class="btn btn-primary" />

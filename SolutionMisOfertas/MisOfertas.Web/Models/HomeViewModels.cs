@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace MisOfertas.Web.Models
 {
     public class HomeView
     {
+        [Range(1,5,ErrorMessage ="El rango de valoracion es entre 1 y 5.")]
         public int Valoracion { get; set; }
         public DateTime FechaValoracion { get; set; }
         public RubroIndex RubroReg { get; set; }
@@ -25,9 +27,11 @@ namespace MisOfertas.Web.Models
 
     public enum RubroIndex
     {
-        Alimentos,
+        Todos,
+        Alimento,
         Electronica,
-        Linea,
+        [Display(Name="Linea Blanca")]
+        LineaBlanca,
         Ropa
     }
 }

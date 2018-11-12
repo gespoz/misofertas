@@ -24,7 +24,7 @@ namespace MisOfertas.Web.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult Autherize(MisOfertas.Web.Models.LoginViewModel model)
         {
             using (var db = new MisOfertas.Datos.MisOfertasEntities())
@@ -50,7 +50,7 @@ namespace MisOfertas.Web.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult Register(MisOfertas.Web.Models.RegistroLogin model)
         {
             MisOfertas.Negocio.Models.Persona persona = new MisOfertas.Negocio.Models.Persona()
