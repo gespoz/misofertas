@@ -1,7 +1,7 @@
 /* CREACION DE DIRECTORIO EN USUARIO SYSTEM DANDOLE PRIVILEGIOS A USUARIO MISOFERTAS
 SELECT * FROM ALL_DIRECTORIES;
-GRANT READ, WRITE, EXECUTE ON DIRECTORY DIR_IMG TO misofertas;
 CREATE DIRECTORY DIR_IMG AS 'D:\oraclexe\';
+GRANT READ, WRITE, EXECUTE ON DIRECTORY DIR_IMG TO misofertas;
 */
 --SECCION BORRADO
 DROP TABLE certificado CASCADE CONSTRAINTS;
@@ -125,8 +125,8 @@ ALTER TABLE lote ADD CONSTRAINT lote_pk PRIMARY KEY ( id_lote );
 
 CREATE TABLE mensajeria (
     id_msj                NUMBER(12) NOT NULL,
-    asunto                VARCHAR2(25) NOT NULL,
-    mensaje               VARCHAR2(100) NOT NULL,
+    asunto                VARCHAR2(100) NOT NULL,
+    mensaje               VARCHAR2(200) NOT NULL,
     cupon                 BLOB,
     img_oferta            BLOB,
     sucursal_id_sucur     NUMBER(8) NOT NULL,
@@ -426,9 +426,36 @@ VALUES('Trensito', 'Chocolate 30% cacao, con harta azucar', TO_DATE('03/04/2018'
 INSERT INTO producto(nombre,desc_prod,fec_ingreso,estado,stk_seguro,stk_sucur,rubro,desc_rubro,valor,sucursal_id_sucur) 
 VALUES('Toddy', 'Galletas con chips de chocolate', TO_DATE('17/04/2018','dd/mm/yyyy'), 'T', 10, 20, 'Alimento', 'Perecible', 1500,1);
 INSERT INTO producto(nombre,desc_prod,fec_ingreso,estado,stk_seguro,stk_sucur,rubro,desc_rubro,valor,sucursal_id_sucur) 
-VALUES('Notebook Intel', 'Computador Dell', TO_DATE('17/04/2018','dd/mm/yyyy'), 'T', 10, 20, 'Electronica', 'No Perecible', 250000,1);
+VALUES('Brownie', 'Queque de Chocolate', TO_DATE('07/11/2018','dd/mm/yyyy'), 'N', 10, 20, 'Alimento', 'Perecible', 15000,1);
+INSERT INTO producto(nombre,desc_prod,fec_ingreso,estado,stk_seguro,stk_sucur,rubro,desc_rubro,valor,sucursal_id_sucur) 
+VALUES('Surtido de Galletas', 'Surtido Diario de galletas', TO_DATE('07/11/2018','dd/mm/yyyy'), 'T', 10, 20, 'Alimento', 'Perecible', 9990,1);
+
+INSERT INTO producto(nombre,desc_prod,fec_ingreso,estado,stk_seguro,stk_sucur,rubro,desc_rubro,valor,sucursal_id_sucur) 
+VALUES('Notebook Dell', 'Computador Dell', TO_DATE('17/04/2018','dd/mm/yyyy'), 'T', 10, 20, 'Electronica', 'No Perecible', 250000,1);
+INSERT INTO producto(nombre,desc_prod,fec_ingreso,estado,stk_seguro,stk_sucur,rubro,desc_rubro,valor,sucursal_id_sucur) 
+VALUES('Notebook Acer', 'Computador Acer', TO_DATE('17/10/2018','dd/mm/yyyy'), 'T', 10, 50, 'Electronica', 'No Perecible', 360000,1);
+INSERT INTO producto(nombre,desc_prod,fec_ingreso,estado,stk_seguro,stk_sucur,rubro,desc_rubro,valor,sucursal_id_sucur) 
+VALUES('Nintendo Switch', 'Consola de videojuegos de nintendo', TO_DATE('17/10/2018','dd/mm/yyyy'), 'T', 10, 50, 'Electronica', 'No Perecible', 390000,1);
+INSERT INTO producto(nombre,desc_prod,fec_ingreso,estado,stk_seguro,stk_sucur,rubro,desc_rubro,valor,sucursal_id_sucur) 
+VALUES('IPhone X', 'Smartphone de apple', TO_DATE('17/10/2018','dd/mm/yyyy'), 'T', 10, 50, 'Electronica', 'No Perecible', 230000,1);
+
 INSERT INTO producto(nombre,desc_prod,fec_ingreso,estado,stk_seguro,stk_sucur,rubro,desc_rubro,valor,sucursal_id_sucur) 
 VALUES('Jeans', 'Pantalones Lee', TO_DATE('17/04/2018','dd/mm/yyyy'), 'T', 10, 20, 'Ropa', 'No Perecible', 12000,1);
+INSERT INTO producto(nombre,desc_prod,fec_ingreso,estado,stk_seguro,stk_sucur,rubro,desc_rubro,valor,sucursal_id_sucur) 
+VALUES('Body Bebe', 'Ropa para bebe', TO_DATE('17/04/2018','dd/mm/yyyy'), 'T', 10, 20, 'Ropa', 'No Perecible', 5550,1);
+INSERT INTO producto(nombre,desc_prod,fec_ingreso,estado,stk_seguro,stk_sucur,rubro,desc_rubro,valor,sucursal_id_sucur) 
+VALUES('Vans Old Skool', 'Zapatillas Juveniles', TO_DATE('17/04/2018','dd/mm/yyyy'), 'N', 10, 20, 'Ropa', 'No Perecible', 49990,1);
+INSERT INTO producto(nombre,desc_prod,fec_ingreso,estado,stk_seguro,stk_sucur,rubro,desc_rubro,valor,sucursal_id_sucur) 
+VALUES('Polera Nike Red', 'Polera manga corta deportiva', TO_DATE('17/04/2018','dd/mm/yyyy'), 'T', 10, 20, 'Ropa', 'No Perecible', 11000,1);
+
+INSERT INTO producto(nombre,desc_prod,fec_ingreso,estado,stk_seguro,stk_sucur,rubro,desc_rubro,valor,sucursal_id_sucur) 
+VALUES('Lavadora LG', 'Lavadora de Ropa con wifi', TO_DATE('17/04/2018','dd/mm/yyyy'), 'T', 10, 20, 'Linea Blanca', 'No Perecible', 310000,1);
+INSERT INTO producto(nombre,desc_prod,fec_ingreso,estado,stk_seguro,stk_sucur,rubro,desc_rubro,valor,sucursal_id_sucur) 
+VALUES('Cocina', 'Cocina 6 llamas', TO_DATE('17/04/2018','dd/mm/yyyy'), 'T', 10, 20, 'Linea Blanca', 'No Perecible', 280000,1);
+INSERT INTO producto(nombre,desc_prod,fec_ingreso,estado,stk_seguro,stk_sucur,rubro,desc_rubro,valor,sucursal_id_sucur) 
+VALUES('Refrigerador', 'Refrigerador con freezer', TO_DATE('17/04/2018','dd/mm/yyyy'), 'T', 10, 20, 'Linea Blanca', 'No Perecible', 370000,1);
+INSERT INTO producto(nombre,desc_prod,fec_ingreso,estado,stk_seguro,stk_sucur,rubro,desc_rubro,valor,sucursal_id_sucur) 
+VALUES('Lava Vajilla', 'Lava loza', TO_DATE('17/04/2018','dd/mm/yyyy'), 'T', 10, 20, 'Linea Blanca', 'No Perecible', 270000,1);
 
 SET serveroutput ON
 DECLARE 
@@ -436,7 +463,7 @@ DECLARE
   v_bfile BFILE;
 BEGIN
 INSERT INTO oferta(descripcion,fec_inicio,fec_termino,img_oferta,valoracion_total,porc_desc,sucursal_id_sucur,producto_id_prod) 
-VALUES ('Oferta con un 10% de descuento',TO_DATE('06/11/2018','dd/mm/yyyy'), TO_DATE('17/06/2018','dd/mm/yyyy'),EMPTY_BLOB(),7,0.1,1,1) RETURNING img_oferta INTO v_blob;
+VALUES ('Oferta con un 10% de descuento',TO_DATE('06/11/2018','dd/mm/yyyy'), TO_DATE('17/11/2018','dd/mm/yyyy'),EMPTY_BLOB(),2,10,1,1) RETURNING img_oferta INTO v_blob;
   v_bfile := BFILENAME('DIR_IMG', 'chocolate.jpg');
 DBMS_LOB.OPEN(v_bfile, DBMS_LOB.LOB_READONLY);
   DBMS_LOB.LOADFROMFILE(v_blob, v_bfile, SYS.DBMS_LOB.GETLENGTH(v_bfile));
@@ -450,7 +477,7 @@ DECLARE
   v_bfile BFILE;
 BEGIN
 INSERT INTO oferta(descripcion,fec_inicio,fec_termino,img_oferta,valoracion_total,porc_desc,sucursal_id_sucur,producto_id_prod) 
-VALUES ('Oferta con un 10% de descuento',TO_DATE('06/11/2018','dd/mm/yyyy'), TO_DATE('17/06/2018','dd/mm/yyyy'),EMPTY_BLOB(),5,0.1,1,2) RETURNING img_oferta INTO v_blob;
+VALUES ('Oferta con un 10% de descuento',TO_DATE('06/11/2018','dd/mm/yyyy'), TO_DATE('17/11/2018','dd/mm/yyyy'),EMPTY_BLOB(),3,10,1,2) RETURNING img_oferta INTO v_blob;
   v_bfile := BFILENAME('DIR_IMG', 'galleta.jpg');
 DBMS_LOB.OPEN(v_bfile, DBMS_LOB.LOB_READONLY);
   DBMS_LOB.LOADFROMFILE(v_blob, v_bfile, SYS.DBMS_LOB.GETLENGTH(v_bfile));
@@ -464,7 +491,7 @@ DECLARE
   v_bfile BFILE;
 BEGIN
 INSERT INTO oferta(descripcion,fec_inicio,fec_termino,img_oferta,valoracion_total,porc_desc,sucursal_id_sucur,producto_id_prod) 
-VALUES ('Oferta con un 15% de descuento',TO_DATE('06/11/2018','dd/mm/yyyy'), TO_DATE('17/06/2018','dd/mm/yyyy'),EMPTY_BLOB(),5,0.15,1,3) RETURNING img_oferta INTO v_blob;
+VALUES ('Oferta con un 15% de descuento',TO_DATE('06/11/2018','dd/mm/yyyy'), TO_DATE('17/11/2018','dd/mm/yyyy'),EMPTY_BLOB(),5,15,1,3) RETURNING img_oferta INTO v_blob;
   v_bfile := BFILENAME('DIR_IMG', 'notebook.jpg');
 DBMS_LOB.OPEN(v_bfile, DBMS_LOB.LOB_READONLY);
   DBMS_LOB.LOADFROMFILE(v_blob, v_bfile, SYS.DBMS_LOB.GETLENGTH(v_bfile));
@@ -478,8 +505,176 @@ DECLARE
   v_bfile BFILE;
 BEGIN
 INSERT INTO oferta(descripcion,fec_inicio,fec_termino,img_oferta,valoracion_total,porc_desc,sucursal_id_sucur,producto_id_prod) 
-VALUES ('Oferta con un 15% de descuento',TO_DATE('06/11/2018','dd/mm/yyyy'), TO_DATE('17/06/2018','dd/mm/yyyy'),EMPTY_BLOB(),10,0.15,1,4) RETURNING img_oferta INTO v_blob;
+VALUES ('Oferta con un 15% de descuento',TO_DATE('06/11/2018','dd/mm/yyyy'), TO_DATE('17/11/2018','dd/mm/yyyy'),EMPTY_BLOB(),5,15,1,4) RETURNING img_oferta INTO v_blob;
   v_bfile := BFILENAME('DIR_IMG', 'blue.jpg');
+DBMS_LOB.OPEN(v_bfile, DBMS_LOB.LOB_READONLY);
+  DBMS_LOB.LOADFROMFILE(v_blob, v_bfile, SYS.DBMS_LOB.GETLENGTH(v_bfile));
+  DBMS_LOB.CLOSE(v_bfile);
+  COMMIT;
+END;
+
+SET serveroutput ON
+DECLARE 
+  v_blob BLOB;
+  v_bfile BFILE;
+BEGIN
+INSERT INTO oferta(descripcion,fec_inicio,fec_termino,img_oferta,valoracion_total,porc_desc,sucursal_id_sucur,producto_id_prod) 
+VALUES ('Oferta con un 10% de descuento',TO_DATE('06/11/2018','dd/mm/yyyy'), TO_DATE('17/11/2018','dd/mm/yyyy'),EMPTY_BLOB(),1,10,1,5) RETURNING img_oferta INTO v_blob;
+  v_bfile := BFILENAME('DIR_IMG', 'brownie.jpg');
+DBMS_LOB.OPEN(v_bfile, DBMS_LOB.LOB_READONLY);
+  DBMS_LOB.LOADFROMFILE(v_blob, v_bfile, SYS.DBMS_LOB.GETLENGTH(v_bfile));
+  DBMS_LOB.CLOSE(v_bfile);
+  COMMIT;
+END;
+
+SET serveroutput ON
+DECLARE 
+  v_blob BLOB;
+  v_bfile BFILE;
+BEGIN
+INSERT INTO oferta(descripcion,fec_inicio,fec_termino,img_oferta,valoracion_total,porc_desc,sucursal_id_sucur,producto_id_prod) 
+VALUES ('Oferta con un 10% de descuento',TO_DATE('06/11/2018','dd/mm/yyyy'), TO_DATE('17/11/2018','dd/mm/yyyy'),EMPTY_BLOB(),3,10,1,6) RETURNING img_oferta INTO v_blob;
+  v_bfile := BFILENAME('DIR_IMG', 'galleta1.jpg');
+DBMS_LOB.OPEN(v_bfile, DBMS_LOB.LOB_READONLY);
+  DBMS_LOB.LOADFROMFILE(v_blob, v_bfile, SYS.DBMS_LOB.GETLENGTH(v_bfile));
+  DBMS_LOB.CLOSE(v_bfile);
+  COMMIT;
+END;
+
+SET serveroutput ON
+DECLARE 
+  v_blob BLOB;
+  v_bfile BFILE;
+BEGIN
+INSERT INTO oferta(descripcion,fec_inicio,fec_termino,img_oferta,valoracion_total,porc_desc,sucursal_id_sucur,producto_id_prod) 
+VALUES ('Oferta con un 15% de descuento',TO_DATE('06/11/2018','dd/mm/yyyy'), TO_DATE('17/11/2018','dd/mm/yyyy'),EMPTY_BLOB(),5,15,1,7) RETURNING img_oferta INTO v_blob;
+  v_bfile := BFILENAME('DIR_IMG', 'acer.jpg');
+DBMS_LOB.OPEN(v_bfile, DBMS_LOB.LOB_READONLY);
+  DBMS_LOB.LOADFROMFILE(v_blob, v_bfile, SYS.DBMS_LOB.GETLENGTH(v_bfile));
+  DBMS_LOB.CLOSE(v_bfile);
+  COMMIT;
+END;
+
+SET serveroutput ON
+DECLARE 
+  v_blob BLOB;
+  v_bfile BFILE;
+BEGIN
+INSERT INTO oferta(descripcion,fec_inicio,fec_termino,img_oferta,valoracion_total,porc_desc,sucursal_id_sucur,producto_id_prod) 
+VALUES ('Oferta con un 15% de descuento',TO_DATE('06/11/2018','dd/mm/yyyy'), TO_DATE('17/11/2018','dd/mm/yyyy'),EMPTY_BLOB(),5,15,1,8) RETURNING img_oferta INTO v_blob;
+  v_bfile := BFILENAME('DIR_IMG', 'switch.jpg');
+DBMS_LOB.OPEN(v_bfile, DBMS_LOB.LOB_READONLY);
+  DBMS_LOB.LOADFROMFILE(v_blob, v_bfile, SYS.DBMS_LOB.GETLENGTH(v_bfile));
+  DBMS_LOB.CLOSE(v_bfile);
+  COMMIT;
+END;
+
+SET serveroutput ON
+DECLARE 
+  v_blob BLOB;
+  v_bfile BFILE;
+BEGIN
+INSERT INTO oferta(descripcion,fec_inicio,fec_termino,img_oferta,valoracion_total,porc_desc,sucursal_id_sucur,producto_id_prod) 
+VALUES ('Oferta con un 15% de descuento',TO_DATE('06/11/2018','dd/mm/yyyy'), TO_DATE('17/11/2018','dd/mm/yyyy'),EMPTY_BLOB(),4,15,1,9) RETURNING img_oferta INTO v_blob;
+  v_bfile := BFILENAME('DIR_IMG', 'iphonex.jpg');
+DBMS_LOB.OPEN(v_bfile, DBMS_LOB.LOB_READONLY);
+  DBMS_LOB.LOADFROMFILE(v_blob, v_bfile, SYS.DBMS_LOB.GETLENGTH(v_bfile));
+  DBMS_LOB.CLOSE(v_bfile);
+  COMMIT;
+END;
+
+SET serveroutput ON
+DECLARE 
+  v_blob BLOB;
+  v_bfile BFILE;
+BEGIN
+INSERT INTO oferta(descripcion,fec_inicio,fec_termino,img_oferta,valoracion_total,porc_desc,sucursal_id_sucur,producto_id_prod) 
+VALUES ('Oferta con un 15% de descuento',TO_DATE('06/11/2018','dd/mm/yyyy'), TO_DATE('17/11/2018','dd/mm/yyyy'),EMPTY_BLOB(),2,15,1,10) RETURNING img_oferta INTO v_blob;
+  v_bfile := BFILENAME('DIR_IMG', 'body.jpg');
+DBMS_LOB.OPEN(v_bfile, DBMS_LOB.LOB_READONLY);
+  DBMS_LOB.LOADFROMFILE(v_blob, v_bfile, SYS.DBMS_LOB.GETLENGTH(v_bfile));
+  DBMS_LOB.CLOSE(v_bfile);
+  COMMIT;
+END;
+
+SET serveroutput ON
+DECLARE 
+  v_blob BLOB;
+  v_bfile BFILE;
+BEGIN
+INSERT INTO oferta(descripcion,fec_inicio,fec_termino,img_oferta,valoracion_total,porc_desc,sucursal_id_sucur,producto_id_prod) 
+VALUES ('Oferta con un 15% de descuento',TO_DATE('06/11/2018','dd/mm/yyyy'), TO_DATE('17/11/2018','dd/mm/yyyy'),EMPTY_BLOB(),5,15,1,11) RETURNING img_oferta INTO v_blob;
+  v_bfile := BFILENAME('DIR_IMG', 'zapatillas.jpg');
+DBMS_LOB.OPEN(v_bfile, DBMS_LOB.LOB_READONLY);
+  DBMS_LOB.LOADFROMFILE(v_blob, v_bfile, SYS.DBMS_LOB.GETLENGTH(v_bfile));
+  DBMS_LOB.CLOSE(v_bfile);
+  COMMIT;
+END;
+
+SET serveroutput ON
+DECLARE 
+  v_blob BLOB;
+  v_bfile BFILE;
+BEGIN
+INSERT INTO oferta(descripcion,fec_inicio,fec_termino,img_oferta,valoracion_total,porc_desc,sucursal_id_sucur,producto_id_prod) 
+VALUES ('Oferta con un 15% de descuento',TO_DATE('06/11/2018','dd/mm/yyyy'), TO_DATE('17/11/2018','dd/mm/yyyy'),EMPTY_BLOB(),3,15,1,12) RETURNING img_oferta INTO v_blob;
+  v_bfile := BFILENAME('DIR_IMG', 'polera.jpg');
+DBMS_LOB.OPEN(v_bfile, DBMS_LOB.LOB_READONLY);
+  DBMS_LOB.LOADFROMFILE(v_blob, v_bfile, SYS.DBMS_LOB.GETLENGTH(v_bfile));
+  DBMS_LOB.CLOSE(v_bfile);
+  COMMIT;
+END;
+
+SET serveroutput ON
+DECLARE 
+  v_blob BLOB;
+  v_bfile BFILE;
+BEGIN
+INSERT INTO oferta(descripcion,fec_inicio,fec_termino,img_oferta,valoracion_total,porc_desc,sucursal_id_sucur,producto_id_prod) 
+VALUES ('Oferta con un 15% de descuento',TO_DATE('06/11/2018','dd/mm/yyyy'), TO_DATE('17/11/2018','dd/mm/yyyy'),EMPTY_BLOB(),4,15,1,13) RETURNING img_oferta INTO v_blob;
+  v_bfile := BFILENAME('DIR_IMG', 'lavadora.jpg');
+DBMS_LOB.OPEN(v_bfile, DBMS_LOB.LOB_READONLY);
+  DBMS_LOB.LOADFROMFILE(v_blob, v_bfile, SYS.DBMS_LOB.GETLENGTH(v_bfile));
+  DBMS_LOB.CLOSE(v_bfile);
+  COMMIT;
+END;
+
+SET serveroutput ON
+DECLARE 
+  v_blob BLOB;
+  v_bfile BFILE;
+BEGIN
+INSERT INTO oferta(descripcion,fec_inicio,fec_termino,img_oferta,valoracion_total,porc_desc,sucursal_id_sucur,producto_id_prod) 
+VALUES ('Oferta con un 15% de descuento',TO_DATE('06/11/2018','dd/mm/yyyy'), TO_DATE('17/11/2018','dd/mm/yyyy'),EMPTY_BLOB(),3,15,1,14) RETURNING img_oferta INTO v_blob;
+  v_bfile := BFILENAME('DIR_IMG', 'cocina.jpg');
+DBMS_LOB.OPEN(v_bfile, DBMS_LOB.LOB_READONLY);
+  DBMS_LOB.LOADFROMFILE(v_blob, v_bfile, SYS.DBMS_LOB.GETLENGTH(v_bfile));
+  DBMS_LOB.CLOSE(v_bfile);
+  COMMIT;
+END;
+
+SET serveroutput ON
+DECLARE 
+  v_blob BLOB;
+  v_bfile BFILE;
+BEGIN
+INSERT INTO oferta(descripcion,fec_inicio,fec_termino,img_oferta,valoracion_total,porc_desc,sucursal_id_sucur,producto_id_prod) 
+VALUES ('Oferta con un 15% de descuento',TO_DATE('06/11/2018','dd/mm/yyyy'), TO_DATE('17/11/2018','dd/mm/yyyy'),EMPTY_BLOB(),5,15,1,15) RETURNING img_oferta INTO v_blob;
+  v_bfile := BFILENAME('DIR_IMG', 'refri.jpg');
+DBMS_LOB.OPEN(v_bfile, DBMS_LOB.LOB_READONLY);
+  DBMS_LOB.LOADFROMFILE(v_blob, v_bfile, SYS.DBMS_LOB.GETLENGTH(v_bfile));
+  DBMS_LOB.CLOSE(v_bfile);
+  COMMIT;
+END;
+
+SET serveroutput ON
+DECLARE 
+  v_blob BLOB;
+  v_bfile BFILE;
+BEGIN
+INSERT INTO oferta(descripcion,fec_inicio,fec_termino,img_oferta,valoracion_total,porc_desc,sucursal_id_sucur,producto_id_prod) 
+VALUES ('Oferta con un 15% de descuento',TO_DATE('06/11/2018','dd/mm/yyyy'), TO_DATE('17/11/2018','dd/mm/yyyy'),EMPTY_BLOB(),5,15,1,16) RETURNING img_oferta INTO v_blob;
+  v_bfile := BFILENAME('DIR_IMG', 'lava.jpg');
 DBMS_LOB.OPEN(v_bfile, DBMS_LOB.LOB_READONLY);
   DBMS_LOB.LOADFROMFILE(v_blob, v_bfile, SYS.DBMS_LOB.GETLENGTH(v_bfile));
   DBMS_LOB.CLOSE(v_bfile);

@@ -24,7 +24,6 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("MisOfertas", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
@@ -32,7 +31,6 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                     <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -50,9 +48,9 @@
                     <div class="col-md-2">
                         @Html.EnumDropDownListFor(m => m.RubroReg, new { @class = "form-control" })
                     </div>
-                    @Html.Label("Valoracion", "Valoracion:", new { @class = "col-md-1"})
+                    @Html.Label("Valoracion", "Valoracion:", new { @class = "col-md-1" })
                     <div class="col-md-1">
-                        @Html.EditorFor(m=>m.Valoracion, new { htmlAttributes = new { @type = "number", @class = "form-control", @min = "0", @max = "5", @step = "1", @value = "0" } })
+                        @Html.EditorFor(m => m.Valoracion, new { htmlAttributes = new { @type = "number", @class = "form-control", @min = "0", @max = "5", @step = "1", @value = "0" } })
                         @*<input type="number" name="Valor" class="form-control" min="1" max="5" />*@
                     </div>
                     <div class="form-actions form-actions-clean col-sm-offset-3">
@@ -65,9 +63,10 @@
 
         <!-- Page Features -->
         <div class="row text-center">
+            @{ var conta = 0;}
             @foreach (var item in Model.OfertasTabla)
             {
-
+                conta++;
                 var img = String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(item.Imagen));
                 var estado = "N/A";
                 if (item.Disponible == "T")
@@ -87,12 +86,16 @@
                             <p class="card-text">Valoracion: @item.Valoracion</p>
                             <p class="card-text">Estado: @estado</p>
                         </div>
+                        @{
+                            Session["" + @conta + ""] = item;
+                        }
                         <div class="card-footer">
-                            <a href="#" class="btn btn-primary">Mas!</a>
+                            @Html.ActionLink("Mas!", "More", "Home", new { @class="btn btn-primary", valor=@conta})
                         </div>
                     </div>
                 </div>
             }
+
         </div>
         <!-- /.row -->
     </div>

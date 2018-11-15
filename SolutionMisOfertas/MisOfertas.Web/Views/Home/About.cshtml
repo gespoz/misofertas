@@ -1,7 +1,52 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
-
-<p>Use this area to provide additional information.</p>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<!-- Navigation -->
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("MisOfertas", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
+            </ul>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+</div>
+<center><h1>Acerca de Nosotros</h1></center>
+<div class="container">
+    <div>
+        <!-- Blog Post Content Column -->
+        <div>
+            <hr>
+            <!-- Preview Image -->
+            <center><img class="img-responsive" src="https://nyc-wpengine.netdna-ssl.com/wp-content/uploads/2016/12/Shopping-4-Xmas.jpg" alt=""></center>
+            <hr>
+            <!-- Post Content -->
+            <p class="lead" style="color:darkorange;">Representamos los intereses de las tiendas y sus trabajadores, se preocupa de mantener el abastecimiento nacional y mantener una buena realcion con el consumidor.</p>
+            <p>Nosotros como Asociacion nacional de tiendas de retail, tenemos funciones para dar el apoyo a la operacion de las tiendas y sus canales de distribucion, en una funcion orientada al servicio a la comunidad, con una vision de proteccion al medio ambiente, todo lo anterior procurando una excelencia en el servicio a los clientes. Desde el punto de vista legal, nos preocupamos de velar por el cumplimiento de las normas y participacion etica y antender las inquietudes de proveedores y clientes.</p>
+            <p>Nuestra labor es ofrecer permanentemente los mejores productos a los consumidores, manteniendo en estas empresas una frecuencia en la circulacion de los productos, es decir, comprar y vender sin que los productos esten almacenados mas del tiempo necesario para asegurar su calidad.</p>
+            <hr>
+        </div>
+    </div>
+</div>
+<!-- Footer -->
+<br />
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; MisOfertas 2018</p>
+    </div>
+    <!-- /.container -->
+</footer>
