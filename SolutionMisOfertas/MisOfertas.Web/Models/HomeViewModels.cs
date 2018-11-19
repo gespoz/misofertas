@@ -23,6 +23,19 @@ namespace MisOfertas.Web.Models
         public string Disponible { get; set; }
         public decimal Valoracion { get; set; }
         public string Nombre { get; set; }
+        public string Descripcion { get; set; }
+        public int Valor { get; set; }
+        public int Id { get; set; }
+    }
+
+    public class MoreInfo
+    {
+        public OfertasHome Ofertas { get; set; }
+
+        public int Valora { get; set; }
+        [Required]
+        public HttpPostedFileBase Img { get; set; }
+        public byte[] Imagen { get; set; }
     }
 
     public enum RubroIndex

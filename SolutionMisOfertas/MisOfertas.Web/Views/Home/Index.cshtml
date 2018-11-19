@@ -82,7 +82,7 @@
                     <div class="card">
                         <img class="card-img-top" src="@img" alt="">
                         <div class="card-body">
-                            <h4 class="card-title">@item.Nombre</h4>
+                            <h4 class="card-title" style="color:black;">@item.Nombre</h4>
                             <p class="card-text">Valoracion: @item.Valoracion</p>
                             <p class="card-text">Estado: @estado</p>
                         </div>
@@ -90,7 +90,7 @@
                             Session["" + @conta + ""] = item;
                         }
                         <div class="card-footer">
-                            @Html.ActionLink("Mas!", "More", "Home", new { @class="btn btn-primary", valor=@conta})
+                            @Html.ActionLink("Mas!", "More", "Home",new { @class="btn btn-primary", @style = "color:darkorange;", id=@conta},null)
                         </div>
                     </div>
                 </div>
@@ -115,7 +115,7 @@
 </html>
 <style>
     .btn.btn-primary {
-        background: #f0ad4e none repeat scroll 0 0;
+        background: #ff9900 none repeat scroll 0 0;
         border-color: #f0ad4e;
         color: #ffffff;
         font-size: 14px;

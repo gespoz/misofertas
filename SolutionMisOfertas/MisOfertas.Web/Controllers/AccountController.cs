@@ -27,9 +27,13 @@ namespace MisOfertas.Web.Controllers
         [HttpPost, ValidateInput(false)]
         public ActionResult Autherize(MisOfertas.Web.Models.LoginViewModel model)
         {
+            Session["userName"] = null;
+            Session["rutConsu"] = null;
+
             using (var db = new MisOfertas.Datos.MisOfertasEntities())
             {
                 var userDetails = db.USUARIO.Where(x => x.USERNAME == model.User && x.PASSWORD == model.Pass).FirstOrDefault();
+                var consuDetails = db.CONSUMIDOR.Where(x=> x.USUARIO_USERNAME == userDetails.USERNAME).FirstOrDefault();
                 if (userDetails == null)
                 {
                     model.LoginErrorMessage = "Usuario o Contraseña Incorrecta.";
@@ -38,6 +42,7 @@ namespace MisOfertas.Web.Controllers
                 else
                 {
                     Session["userName"] = userDetails.USERNAME;
+                    Session["rutConsu"] = consuDetails.PERSONA_RUN;
                     return RedirectToAction("Index", "Home");
                 }
             }
@@ -53,40 +58,45 @@ namespace MisOfertas.Web.Controllers
         [HttpPost, ValidateInput(false)]
         public ActionResult Register(MisOfertas.Web.Models.RegistroLogin model)
         {
-            MisOfertas.Negocio.Models.Persona persona = new MisOfertas.Negocio.Models.Persona()
+            if (ModelState.IsValid)
             {
-                Run = model.Run,
-                Nombre = model.Nombre,
-                Paterno = model.Paterno,
-                Materno = model.Materno,
-                Sexo = model.SexoReg.ToString(),
-                FecNac = model.Fecnac,
-                Email = model.Email
-            };
-            MisOfertas.Negocio.Models.Usuario usuario = new MisOfertas.Negocio.Models.Usuario()
-            {
-                Username = model.User,
-                Password = model.Pass,
-                Perfil = "Consumidor"
-            };
-
-            if (persona.Agregar() == true && usuario.Agregar() == true)
-            {
-                MisOfertas.Negocio.Models.Consumidor consumidor = new MisOfertas.Negocio.Models.Consumidor()
+                MisOfertas.Negocio.Models.Persona persona = new MisOfertas.Negocio.Models.Persona()
                 {
-                    RunPersona = model.Run,
-                    Puntos = 0,
-                    Username = model.User
+                    Run = model.Run,
+                    Nombre = model.Nombre,
+                    Paterno = model.Paterno,
+                    Materno = model.Materno,
+                    Sexo = model.Sexo,
+                    FecNac = model.Fecnac,
+                    Email = model.Email
+                };
+                MisOfertas.Negocio.Models.Usuario usuario = new MisOfertas.Negocio.Models.Usuario()
+                {
+                    Username = model.User,
+                    Password = model.Pass,
+                    Perfil = "Consumidor"
                 };
 
-                consumidor.Agregar();
+                if (persona.Agregar() == true && usuario.Agregar() == true)
+                {
+                    MisOfertas.Negocio.Models.Consumidor consumidor = new MisOfertas.Negocio.Models.Consumidor()
+                    {
+                        RunPersona = model.Run,
+                        Puntos = 0,
+                        Username = model.User
+                    };
+
+                    consumidor.Agregar();
+                }
+                else
+                {
+                    model.LoginErrorMessage = "No se pudo ingresar al usuario.";
+                }
                 return RedirectToAction("Login", "Account");
             }
-            else
-            {
-                model.LoginErrorMessage = "No se pudo ingresar al usuario.";
-                return View("Register", model);
-            }
+            model.LoginErrorMessage = "Usuario no registrado.";
+            return View("Register", model);
+
         }
         
     }

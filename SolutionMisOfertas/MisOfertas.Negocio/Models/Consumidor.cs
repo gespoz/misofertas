@@ -46,6 +46,26 @@ namespace MisOfertas.Negocio.Models
             }
         }
 
-        
+        public bool Modificar()
+        {
+            try
+            {
+                using (var db = new MisOfertas.Datos.MisOfertasEntities())
+                {
+                    var result = from u in db.CONSUMIDOR where (u.USUARIO_USERNAME == this.Username) select u;
+                    if (result.Count() != 0)
+                    {
+                        var dbuser = result.First();
+                        dbuser.PUNTOS = dbuser.PUNTOS + this.Puntos;
+                        db.SaveChanges();
+                    }
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

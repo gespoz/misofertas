@@ -1,4 +1,4 @@
-﻿
+﻿@model MisOfertas.Web.Models.MoreInfo
 @{
     ViewBag.Title = "More";
 }
@@ -38,26 +38,70 @@
     </div>
     <center><h1 class="my-4">Detalle del Producto</h1></center>
     <hr />
+    @{ 
+        var img = String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.Ofertas.Imagen));
+    }
     <!-- Page Content -->
     <div class="container">
         <div class="row">
-            <!-- /.col-lg-3 -->
-            <div class="col-lg-9">
+            <!-- /.col-lg-3 class="col-lg-9" -->
+            <div>
                 <div class="card mt-4">
-                    <img class="card-img-top img-fluid" src="http://placehold.it/300x300" width="300" height="300" alt="">
-                    <div class="card-body">
-                        <h3 class="card-title" style="color:darkorange;">Product Name</h3>
-                        <h4>$24.99</h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente dicta fugit fugiat hic aliquam itaque facere, soluta. Totam id dolores, sint aperiam sequi pariatur praesentium animi perspiciatis molestias iure, ducimus!</p>
-                        <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-                        4.0 stars
-                    </div>
+                    <center><img class="card-img-top img-fluid" src="@img" width="300" height="300" alt=""></center>
+                    <center>
+                        <div class="card-body">
+                            <h3 class="card-title" style="color:darkorange;">@Model.Ofertas.Nombre</h3>
+                            <h4>$@Model.Ofertas.Valor</h4>
+                            <p><h4>@Model.Ofertas.Descripcion</h4></p>
+
+                            @{
+                                if (Model.Ofertas.Valoracion == 1)
+                                {
+                                    <span class="text-warning">&#9733; &#9734; &#9734; &#9734; &#9734;</span> @Html.Label("1 Valoracion")
+                                }
+                                else if (Model.Ofertas.Valoracion == 2)
+                                {
+                                    <span class="text-warning">&#9733; &#9733; &#9734; &#9734; &#9734;</span> @Html.Label("2 Valoraciones")
+                                }
+                                else if (Model.Ofertas.Valoracion == 3)
+                                {
+                                    <span class="text-warning">&#9733; &#9733; &#9733; &#9734; &#9734;</span> @Html.Label("3 Valoraciones")
+                                }
+                                else if (Model.Ofertas.Valoracion == 4)
+                                {
+                                    <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span> @Html.Label("4 Valoraciones")
+                                }
+                                else if (Model.Ofertas.Valoracion == 5)
+                                {
+                                    <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9733;</span> @Html.Label("5 Valoraciones")
+                                }
+                            }
+                        </div>
+                    </center>
                 </div>
                 <!-- /.card -->
                 <div class="card card-outline-secondary my-4">
                     <div class="card-body">
                         <hr>
-                        <a href="#" class="btn btn-success">Leave a Review</a>
+                        @using (Html.BeginForm("More", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            <div class="form-group">
+                                @Html.Label("Boleta", "Boleta:", new { @class = "col-md-1" })
+                                <div class="col-md-4">
+                                    @Html.TextBoxFor(m => m.Img, new { @type = "file" })
+                                </div>
+                                @Html.Label("Valoracion", "Valoracion:", new { @class = "col-md-1" })
+                                <div class="col-md-1">
+                                    @Html.EditorFor(m => m.Valora, new { htmlAttributes = new { @type = "number", @class = "form-control", @min = "1", @max = "5", @step = "1", @value = "2" } })
+                                    @*<input type="number" name="Valor" class="form-control" min="1" max="5" />*@
+                                </div>
+                                <div class="form-actions form-actions-clean col-sm-offset-3">
+                                    <input type="submit" value="Buscar" style="background-color:orange;" class="btn btn-group" />
+                                </div>
+                                @ViewBag.Error
+                                @ViewBag.Mensaje
+                            </div>
+                        }
                     </div>
                 </div>
                 <!-- /.card -->
@@ -79,5 +123,44 @@
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+<style>
+    .btn.btn-primary {
+        background: #ff9900 none repeat scroll 0 0;
+        border-color: #f0ad4e;
+        color: #ffffff;
+        font-size: 14px;
+        width: 10%;
+        height: 50px;
+        line-height: 50px;
+        padding: 0;
+    }
+
+    .forgot {
+        text-align: left;
+        margin-bottom: 30px;
+    }
+
+    .botto-text {
+        color: #ffffff;
+        font-size: 14px;
+        margin: auto;
+    }
+
+    .btn.btn-primary.reset {
+        background: #ff9900 none repeat scroll 0 0;
+    }
+
+    .back {
+        text-align: left;
+        margin-top: 10px;
+    }
+
+        .back a {
+            color: #444444;
+            font-size: 13px;
+            text-decoration: none;
+        }
+</style>
 
 

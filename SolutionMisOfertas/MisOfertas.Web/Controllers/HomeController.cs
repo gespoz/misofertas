@@ -29,7 +29,10 @@ namespace MisOfertas.Web.Controllers
                     Imagen = l.Imagen,
                     Disponible = l.Disponible,
                     Nombre = l.Nombre,
-                    Valoracion = l.Valoracion
+                    Valoracion = l.Valoracion,
+                    Descripcion = l.Descripcion,
+                    Valor = l.Valor,
+                    Id = l.Id
                 });
             }
 
@@ -45,7 +48,10 @@ namespace MisOfertas.Web.Controllers
                     Imagen = item.X.IMG_OFERTA,
                     Valoracion = item.X.VALORACION_TOTAL,
                     Disponible = item.Y.ESTADO,
-                    Nombre = item.Y.NOMBRE
+                    Nombre = item.Y.NOMBRE,
+                    Descripcion = item.X.DESCRIPCION,
+                    Valor = item.Y.VALOR,
+                    Id = item.X.ID_OFERTA
                 }).ToList();
                 return lista;
             }           
@@ -60,7 +66,10 @@ namespace MisOfertas.Web.Controllers
                     Imagen = item.X.IMG_OFERTA,
                     Valoracion = item.X.VALORACION_TOTAL,
                     Disponible = item.Y.ESTADO,
-                    Nombre = item.Y.NOMBRE
+                    Nombre = item.Y.NOMBRE,
+                    Descripcion = item.X.DESCRIPCION,
+                    Valor = item.Y.VALOR,
+                    Id = item.X.ID_OFERTA
                 }).ToList();
                 return lista;
             }
@@ -75,7 +84,10 @@ namespace MisOfertas.Web.Controllers
                     Imagen = item.X.IMG_OFERTA,
                     Valoracion = item.X.VALORACION_TOTAL,
                     Disponible = item.Y.ESTADO,
-                    Nombre = item.Y.NOMBRE
+                    Nombre = item.Y.NOMBRE,
+                    Descripcion = item.X.DESCRIPCION,
+                    Valor = item.Y.VALOR,
+                    Id = item.X.ID_OFERTA
                 }).ToList();
                 return lista;
             }
@@ -90,7 +102,10 @@ namespace MisOfertas.Web.Controllers
                     Imagen = item.X.IMG_OFERTA,
                     Valoracion = item.X.VALORACION_TOTAL,
                     Disponible = item.Y.ESTADO,
-                    Nombre = item.Y.NOMBRE
+                    Nombre = item.Y.NOMBRE,
+                    Descripcion = item.X.DESCRIPCION,
+                    Valor = item.Y.VALOR,
+                    Id = item.X.ID_OFERTA
                 }).ToList();
                 return lista;
             }
@@ -130,7 +145,10 @@ namespace MisOfertas.Web.Controllers
                             Imagen = l.Imagen,
                             Disponible = l.Disponible,
                             Nombre = l.Nombre,
-                            Valoracion = l.Valoracion
+                            Valoracion = l.Valoracion,
+                            Descripcion = l.Descripcion,
+                            Valor = l.Valor,
+                            Id = l.Id
                         });
                     }
                 }
@@ -145,7 +163,10 @@ namespace MisOfertas.Web.Controllers
                             Imagen = l.Imagen,
                             Disponible = l.Disponible,
                             Nombre = l.Nombre,
-                            Valoracion = l.Valoracion
+                            Valoracion = l.Valoracion,
+                            Descripcion = l.Descripcion,
+                            Valor = l.Valor,
+                            Id = l.Id
                         });
                     }
                 }
@@ -163,7 +184,10 @@ namespace MisOfertas.Web.Controllers
                             Imagen = l.Imagen,
                             Disponible = l.Disponible,
                             Nombre = l.Nombre,
-                            Valoracion = l.Valoracion
+                            Valoracion = l.Valoracion,
+                            Descripcion = l.Descripcion,
+                            Valor = l.Valor,
+                            Id = l.Id
                         });
                     }
                 }
@@ -178,9 +202,14 @@ namespace MisOfertas.Web.Controllers
                             Imagen = l.Imagen,
                             Disponible = l.Disponible,
                             Nombre = l.Nombre,
-                            Valoracion = l.Valoracion
+                            Valoracion = l.Valoracion,
+                            Descripcion = l.Descripcion,
+                            Valor = l.Valor,
+                            Id = l.Id
                         });
                     }
+
+                    
                 }
             }
             return View(m);
@@ -191,9 +220,88 @@ namespace MisOfertas.Web.Controllers
             return View();
         }
 
-        public ActionResult More()
+        public ActionResult More(int id)
         {
-            return View();
+            Session["OfertasId"] = null;
+            Models.OfertasHome item = (Models.OfertasHome)Session[""+id+""];
+
+            var model = new MisOfertas.Web.Models.MoreInfo()
+            {
+                Ofertas = item
+            };
+
+            Session["OfertasId"] = item.Id;
+            Session["model"] = model;
+            return View(model);
+        }
+
+        public bool isValidContentType(string contentType)
+        {
+            return contentType.Equals("image/png") || contentType.Equals("image/jpg") || contentType.Equals("image/jpeg");
+        }
+
+        [HttpPost]
+        public ActionResult More(Models.MoreInfo model)
+        {
+            var modeloIn = Session["model"];
+            int conta = 0;
+            if (model.Img == null)
+            {
+                ViewBag.Error = "Debe ingresar una imagen.";
+                return View(modeloIn);
+            }
+            if (!isValidContentType(model.Img.ContentType))
+            {
+                ViewBag.Error = "Solo se permiten archivos JPG, JPEG y PNG.";
+                return View(modeloIn);
+            }
+            if (model.Img.ContentLength<0)
+            {
+                ViewBag.Error = "Se debe ingresar una imagen.";
+                return View(modeloIn);
+            }
+            var file = model.Img;
+            var filename = Path.GetFileName(file.FileName);
+            var path = Path.Combine(Server.MapPath("~/App_Data"), filename);
+            file.SaveAs(path);
+
+            byte[] fileData = null;
+            
+            using (FileStream fs = System.IO.File.OpenRead(path))
+            {
+                var binaryReader = new BinaryReader(fs);
+                fileData = binaryReader.ReadBytes((int)fs.Length);
+            }
+
+            var modelo = new Models.MoreInfo()
+            {
+                Valora = model.Valora,
+                Imagen = fileData
+            };
+
+            MisOfertas.Negocio.Models.DetalleOferta detalle = new MisOfertas.Negocio.Models.DetalleOferta()
+            {
+                IdDetalle = conta + 3,
+                FecValoracion = DateTime.Now,
+                IdOferta = int.Parse(Session["OfertasId"].ToString()),
+                ImgBoleta = modelo.Imagen, 
+                Run = Session["rutConsu"].ToString(),
+                Valoracion = modelo.Valora,
+                Username = Session["userName"].ToString()
+            };
+
+            detalle.Agregar();
+
+            MisOfertas.Negocio.Models.Consumidor consumidor = new MisOfertas.Negocio.Models.Consumidor()
+            {
+                Puntos = 10,
+                RunPersona = Session["rutConsu"].ToString(),
+                Username = Session["userName"].ToString()
+            };
+
+            consumidor.Modificar();
+            ViewBag.Mensaje = "Valoracion Realizada. Se han agregado 10pts a su cuenta.";
+            return View(modeloIn);
         }
     }
 }
