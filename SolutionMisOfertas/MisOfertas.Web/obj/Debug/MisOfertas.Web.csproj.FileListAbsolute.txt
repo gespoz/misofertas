@@ -198,3 +198,10 @@ D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Web\obj\Debug\MisOfertas.Web.cs
 D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Web\obj\Debug\MisOfertas.Web.csproj.CopyComplete
 D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Web\obj\Debug\MisOfertas.Web.dll
 D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Web\obj\Debug\MisOfertas.Web.pdb
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Web\bin\RazorGenerator.Mvc.dll
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Web\bin\WebActivatorEx.dll
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Web\bin\itextsharp.dll
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Web\bin\RazorPDF.dll
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Web\bin\itextsharp.xml
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Web\bin\itextsharp.xmlworker.dll
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Web\bin\Rotativa.dll

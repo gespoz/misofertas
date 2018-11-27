@@ -1,0 +1,133 @@
+﻿@model MisOfertas.Web.Models.Certificado
+@{
+    ViewBag.Title = "Certificado";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - MisOfertas</title>
+    <!-- Bootstrap core CSS -->
+    <link href="Content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="Content/css/heroic-features.css" rel="stylesheet">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("MisOfertas", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <center><img class="text-center" src="~/Images/bbar.png" width="500" height="110" /></center>
+        <hr />
+        <br />
+        <h3>Run Usuario: @Session["rutConsu"].ToString()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nombre Usuario: @Session["userName"].ToString()</h3>
+        @if (int.Parse(Session["ptsConsu"].ToString()) >= 0 && int.Parse(Session["ptsConsu"].ToString()) <= 100)
+        {
+            <br />
+            <h3>Puntos: @Session["ptsConsu"].ToString()&nbsp;&nbsp;&nbsp;&nbsp;Descuento: 5%</h3>
+            <br />
+            <h3>Tope Precio: $100.000&nbsp;&nbsp;&nbsp;&nbsp;Rubro Valido: Alimento</h3>
+            <br />
+            <img class="text-center" src="~/Images/450_1000.jpg" />
+        }
+        else if (int.Parse(Session["ptsConsu"].ToString()) >= 101 && int.Parse(Session["ptsConsu"].ToString()) <= 500)
+        {
+            <br />
+            <h3>Puntos: @Session["ptsConsu"].ToString()&nbsp;&nbsp;&nbsp;&nbsp;Descuento: 10%</h3>
+            <br />
+            <h3>Tope Precio: $150.000&nbsp;&nbsp;&nbsp;&nbsp;Rubro Valido: Alimento, Electronica, Linea Blanca</h3>
+            <br />
+            <img class="text-center" src="~/Images/450_1000.jpg" />
+        }
+        else if (int.Parse(Session["ptsConsu"].ToString()) >= 501 && int.Parse(Session["ptsConsu"].ToString()) <= 1000)
+        {
+            <br />
+            <h3>Puntos: @Session["ptsConsu"].ToString()&nbsp;&nbsp;&nbsp;Descuento: 15%</h3>
+            <br />
+            <h3>Tope Precio: $300.000&nbsp;&nbsp;&nbsp;Rubro Valido: Alimento, Electronica, Linea Blanca y Ropa</h3>
+            <br />
+            <img class="text-center" src="~/Images/450_1000.jpg" />
+        }
+        <br />
+        @using (Html.BeginForm("Certificado", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <input type="submit" value="Descarga en Pdf" style="background-color:orange;" class="btn btn-group" />
+            @*<p>
+                @Html.ActionLink("Descargar Pdf", "PdfReader")
+            </p>*@
+        }
+    </div>
+    <!-- Footer -->
+    <br />
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; MisOfertas 2018</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+    <!-- Bootstrap core JavaScript -->
+    <script src="Content/vendor/jquery/jquery.min.js"></script>
+    <script src="Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+<style>
+    .btn.btn-primary {
+        background: #ff9900 none repeat scroll 0 0;
+        border-color: #f0ad4e;
+        color: #ffffff;
+        font-size: 14px;
+        width: 20%;
+        height: 50px;
+        line-height: 50px;
+        padding: 0;
+    }
+
+    .forgot {
+        text-align: left;
+        margin-bottom: 30px;
+    }
+
+    .botto-text {
+        color: #ffffff;
+        font-size: 14px;
+        margin: auto;
+    }
+
+    .btn.btn-primary.reset {
+        background: #ff9900 none repeat scroll 0 0;
+    }
+
+    .back {
+        text-align: left;
+        margin-top: 10px;
+    }
+
+        .back a {
+            color: #444444;
+            font-size: 13px;
+            text-decoration: none;
+        }
+</style>
+
+

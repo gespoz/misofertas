@@ -33,3 +33,4 @@ D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Negocio\obj\Debug\MisOfertas.Ne
 D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Negocio\obj\Debug\MisOfertas.Negocio.csproj.CopyComplete
 D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Negocio\obj\Debug\MisOfertas.Negocio.dll
 D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Negocio\obj\Debug\MisOfertas.Negocio.pdb
+D:\Duoc\misofertas\SolutionMisOfertas\MisOfertas.Negocio\bin\Debug\Oracle.ManagedDataAccess.dll

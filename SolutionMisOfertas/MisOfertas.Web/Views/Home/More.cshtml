@@ -96,12 +96,22 @@
                                     @*<input type="number" name="Valor" class="form-control" min="1" max="5" />*@
                                 </div>
                                 <div class="form-actions form-actions-clean col-sm-offset-3">
-                                    <input type="submit" value="Buscar" style="background-color:orange;" class="btn btn-group" />
+                                    <input type="submit" value="Valorar" style="background-color:orange;" class="btn btn-group" />
                                 </div>
                                 @ViewBag.Error
                                 @ViewBag.Mensaje
                             </div>
                         }
+                            <center>
+                                @if (Session["Button"].ToString() == "D")
+                                {
+                                    <input type="submit" value="Descarga Certificado" disabled="disabled" style="background-color:orange;" class="btn btn-group" />
+                                }
+                                else
+                                {
+                                    <input type="submit" value="Descarga Certificado" style="background-color:orange;" onclick="window.location='/Home/Certificado';" class="btn btn-group" />
+                                }
+                            </center>
                     </div>
                 </div>
                 <!-- /.card -->
@@ -119,8 +129,8 @@
         <!-- /.container -->
     </footer>
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="Content/vendor/jquery/jquery.min.js"></script>
+    <script src="Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 

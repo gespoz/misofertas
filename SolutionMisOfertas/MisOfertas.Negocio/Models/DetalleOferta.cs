@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,27 +37,30 @@ namespace MisOfertas.Negocio.Models
         public bool Agregar()
         {
             MisOfertas.Datos.DETALLE_OFERTA detalle = new MisOfertas.Datos.DETALLE_OFERTA();
-            try
-            {
-                using (var db = new MisOfertas.Datos.MisOfertasEntities())
-                {
-                    detalle.CONSUMIDOR_RUN = this.Run;
-                    detalle.CONSUMIDOR_USERNAME = this.Username;
-                    detalle.FEC_VALORACION = this.FecValoracion;
-                    detalle.IMG_BOLETA = this.ImgBoleta;
-                    detalle.VALORACION = this.Valoracion;
-                    detalle.ID_DET = this.IdDetalle;
-                    detalle.OFERTA_ID_OFERTA = this.IdOferta;
 
-                    db.DETALLE_OFERTA.Add(detalle);
-                    db.SaveChanges();
+
+                using (OracleConnection con = new OracleConnection("Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=localhost)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=XE)));User Id=MISOFERTAS;Password=mos;"))
+                {
+                    con.Open();
+                    OracleCommand cmd = new OracleCommand();
+
+                    cmd.Connection = con;
+
+                    cmd.CommandText = "INSERT INTO DETALLE_OFERTA (IMG_BOLETA,FEC_VALORACION,VALORACION,OFERTA_ID_OFERTA,CONSUMIDOR_USERNAME,CONSUMIDOR_RUN) VALUES(:1,:2,:3,:4,:5,:6)";
+
+                    cmd.Parameters.Add(new OracleParameter("1",this.ImgBoleta));
+                    cmd.Parameters.Add(new OracleParameter("2", this.FecValoracion));
+                    cmd.Parameters.Add(new OracleParameter("3", this.Valoracion));
+                    cmd.Parameters.Add(new OracleParameter("4", this.IdOferta));
+                    cmd.Parameters.Add(new OracleParameter("5", this.Username));
+                    cmd.Parameters.Add(new OracleParameter("6", this.Run));
+
+                    int row = cmd.ExecuteNonQuery();
+
+                    con.Dispose();
                 }
                 return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+           
         }
     }
 }

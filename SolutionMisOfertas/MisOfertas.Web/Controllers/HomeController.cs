@@ -7,11 +7,20 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using RazorGenerator;
+using Rotativa;
+using RazorPDF;
+using System.IO;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.tool.xml;
+using iTextSharp.text.html.simpleparser;
 
 namespace MisOfertas.Web.Controllers
 {
     public class HomeController : Controller
     {
+
         public ActionResult Index()
         {
             var model = new Models.HomeView()
@@ -109,18 +118,6 @@ namespace MisOfertas.Web.Controllers
                 }).ToList();
                 return lista;
             }
-        }
-
-        public static Image ConvertirImagen(object bytes)
-        {
-            if (bytes == null)
-            {
-                return null;
-            }
-            byte[] imgArray = (byte[])bytes;
-            MemoryStream mem = new MemoryStream(imgArray);
-
-            return Image.FromStream(mem);
         }
         
         [HttpPost]
@@ -222,14 +219,16 @@ namespace MisOfertas.Web.Controllers
 
         public ActionResult More(int id)
         {
+            
             Session["OfertasId"] = null;
+            Session["Button"] = null;
             Models.OfertasHome item = (Models.OfertasHome)Session[""+id+""];
 
             var model = new MisOfertas.Web.Models.MoreInfo()
             {
                 Ofertas = item
             };
-
+            Session["Button"] = "D";
             Session["OfertasId"] = item.Id;
             Session["model"] = model;
             return View(model);
@@ -244,6 +243,7 @@ namespace MisOfertas.Web.Controllers
         public ActionResult More(Models.MoreInfo model)
         {
             var modeloIn = Session["model"];
+            
             int conta = 0;
             if (model.Img == null)
             {
@@ -281,7 +281,6 @@ namespace MisOfertas.Web.Controllers
 
             MisOfertas.Negocio.Models.DetalleOferta detalle = new MisOfertas.Negocio.Models.DetalleOferta()
             {
-                IdDetalle = conta + 3,
                 FecValoracion = DateTime.Now,
                 IdOferta = int.Parse(Session["OfertasId"].ToString()),
                 ImgBoleta = modelo.Imagen, 
@@ -298,10 +297,74 @@ namespace MisOfertas.Web.Controllers
                 RunPersona = Session["rutConsu"].ToString(),
                 Username = Session["userName"].ToString()
             };
-
+            Session["Button"] = "H";
             consumidor.Modificar();
-            ViewBag.Mensaje = "Valoracion Realizada. Se han agregado 10pts a su cuenta.";
+            ViewBag.Mensaje = "Valoracion Realizada. Se han agregado 10 puntos a su cuenta.";
             return View(modeloIn);
+        }
+
+        public ActionResult Certificado()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Certificado(Models.Certificado modelo)
+        {
+            var model = new Models.Certificado()
+            {
+                RunC = Session["rutConsu"].ToString(),
+                UserC = Session["userName"].ToString()
+            };
+
+            
+
+            using (var db = new MisOfertas.Datos.MisOfertasEntities())
+            {
+                var consu = db.CONSUMIDOR.Where(x => x.PERSONA_RUN == model.RunC).FirstOrDefault();
+
+                if (consu.PUNTOS >= 0 && consu.PUNTOS <= 100)
+                {
+                    MisOfertas.Negocio.Models.CertificadoEmitido certificadoEmitido = new MisOfertas.Negocio.Models.CertificadoEmitido()
+                    {
+                        Run = model.RunC,
+                        Descuento = 5,
+                        Idcert = 1,
+                        Ptsusados = consu.PUNTOS,
+                        Username = model.UserC
+                    };
+
+                    certificadoEmitido.Agregar();
+                }
+                else if (consu.PUNTOS >= 101 && consu.PUNTOS <= 500)
+                {
+                    MisOfertas.Negocio.Models.CertificadoEmitido certificadoEmitido = new MisOfertas.Negocio.Models.CertificadoEmitido()
+                    {
+                        Run = model.RunC,
+                        Descuento = 10,
+                        Idcert = 2,
+                        Ptsusados = consu.PUNTOS,
+                        Username = model.UserC
+                    };
+
+                    certificadoEmitido.Agregar();
+                }
+                else if (consu.PUNTOS >= 501 && consu.PUNTOS <= 1000)
+                {
+                    MisOfertas.Negocio.Models.CertificadoEmitido certificadoEmitido = new MisOfertas.Negocio.Models.CertificadoEmitido()
+                    {
+                        Run = model.RunC,
+                        Descuento = 15,
+                        Idcert = 3,
+                        Ptsusados = consu.PUNTOS,
+                        Username = model.UserC
+                    };
+
+                    certificadoEmitido.Agregar();
+                }
+            }
+            var q = new ActionAsPdf("Certificado");
+            return q;
         }
     }
 }

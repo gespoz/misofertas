@@ -29,11 +29,12 @@ namespace MisOfertas.Web.Controllers
         {
             Session["userName"] = null;
             Session["rutConsu"] = null;
+            Session["ptsConsu"] = null;
 
             using (var db = new MisOfertas.Datos.MisOfertasEntities())
             {
                 var userDetails = db.USUARIO.Where(x => x.USERNAME == model.User && x.PASSWORD == model.Pass).FirstOrDefault();
-                var consuDetails = db.CONSUMIDOR.Where(x=> x.USUARIO_USERNAME == userDetails.USERNAME).FirstOrDefault();
+                
                 if (userDetails == null)
                 {
                     model.LoginErrorMessage = "Usuario o Contraseña Incorrecta.";
@@ -41,8 +42,10 @@ namespace MisOfertas.Web.Controllers
                 }
                 else
                 {
+                    var consuDetails = db.CONSUMIDOR.Where(x => x.USUARIO_USERNAME == userDetails.USERNAME).FirstOrDefault();
                     Session["userName"] = userDetails.USERNAME;
                     Session["rutConsu"] = consuDetails.PERSONA_RUN;
+                    Session["ptsConsu"] = consuDetails.PUNTOS;
                     return RedirectToAction("Index", "Home");
                 }
             }
@@ -92,6 +95,7 @@ namespace MisOfertas.Web.Controllers
                 {
                     model.LoginErrorMessage = "No se pudo ingresar al usuario.";
                 }
+
                 return RedirectToAction("Login", "Account");
             }
             model.LoginErrorMessage = "Usuario no registrado.";
