@@ -305,11 +305,62 @@ namespace MisOfertas.Web.Controllers
 
         public ActionResult Certificado()
         {
-            return View();
+            var model = new Models.Certificado()
+            {
+                RunC = Session["rutConsu"].ToString(),
+                UserC = Session["userName"].ToString()
+            };
+
+            using (var db = new MisOfertas.Datos.MisOfertasEntities())
+            {
+                var consu = db.CONSUMIDOR.Where(x => x.PERSONA_RUN == model.RunC).FirstOrDefault();
+
+                if (consu.PUNTOS >= 0 && consu.PUNTOS <= 100)
+                {
+                    MisOfertas.Negocio.Models.CertificadoEmitido certificadoEmitido = new MisOfertas.Negocio.Models.CertificadoEmitido()
+                    {
+                        Run = model.RunC,
+                        Descuento = 5,
+                        Idcert = 1,
+                        Ptsusados = consu.PUNTOS,
+                        Username = model.UserC
+                    };
+
+                    certificadoEmitido.Agregar();
+                }
+                else if (consu.PUNTOS >= 101 && consu.PUNTOS <= 500)
+                {
+                    MisOfertas.Negocio.Models.CertificadoEmitido certificadoEmitido = new MisOfertas.Negocio.Models.CertificadoEmitido()
+                    {
+                        Run = model.RunC,
+                        Descuento = 10,
+                        Idcert = 2,
+                        Ptsusados = consu.PUNTOS,
+                        Username = model.UserC
+                    };
+
+                    certificadoEmitido.Agregar();
+                }
+                else if (consu.PUNTOS >= 501 && consu.PUNTOS <= 1000)
+                {
+                    MisOfertas.Negocio.Models.CertificadoEmitido certificadoEmitido = new MisOfertas.Negocio.Models.CertificadoEmitido()
+                    {
+                        Run = model.RunC,
+                        Descuento = 15,
+                        Idcert = 3,
+                        Ptsusados = consu.PUNTOS,
+                        Username = model.UserC
+                    };
+
+                    certificadoEmitido.Agregar();
+                }
+            }
+
+            return new Rotativa.ViewAsPdf("Certificado", model) { FileName = "ViewAsPdf.pdf" };
         }
 
         [HttpPost]
-        public ActionResult Certificado(Models.Certificado modelo)
+        public ActionResult GeneratePDF(Models.Certificado modelo)
         {
             var model = new Models.Certificado()
             {
@@ -363,7 +414,7 @@ namespace MisOfertas.Web.Controllers
                     certificadoEmitido.Agregar();
                 }
             }
-            var q = new ActionAsPdf("Certificado");
+            var q = new ActionAsPdf("Certificado",model);
             return q;
         }
     }

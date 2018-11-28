@@ -85,22 +85,22 @@
                         <hr>
                         @using (Html.BeginForm("More", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
-                            <div class="form-group">
-                                @Html.Label("Boleta", "Boleta:", new { @class = "col-md-1" })
-                                <div class="col-md-4">
-                                    @Html.TextBoxFor(m => m.Img, new { @type = "file" })
-                                </div>
-                                @Html.Label("Valoracion", "Valoracion:", new { @class = "col-md-1" })
-                                <div class="col-md-1">
-                                    @Html.EditorFor(m => m.Valora, new { htmlAttributes = new { @type = "number", @class = "form-control", @min = "1", @max = "5", @step = "1", @value = "2" } })
-                                    @*<input type="number" name="Valor" class="form-control" min="1" max="5" />*@
-                                </div>
-                                <div class="form-actions form-actions-clean col-sm-offset-3">
-                                    <input type="submit" value="Valorar" style="background-color:orange;" class="btn btn-group" />
-                                </div>
-                                @ViewBag.Error
-                                @ViewBag.Mensaje
+                        <div class="form-group">
+                            @Html.Label("Boleta", "Boleta:", new { @class = "col-md-1" })
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(m => m.Img, new { @type = "file" })
                             </div>
+                            @Html.Label("Valoracion", "Valoracion:", new { @class = "col-md-1" })
+                            <div class="col-md-1">
+                                @Html.EditorFor(m => m.Valora, new { htmlAttributes = new { @type = "number", @class = "form-control", @min = "1", @max = "5", @step = "1", @value = "2" } })
+                                @*<input type="number" name="Valor" class="form-control" min="1" max="5" />*@
+                            </div>
+                            <div class="form-actions form-actions-clean col-sm-offset-3">
+                                <input type="submit" value="Valorar" style="background-color:orange;" class="btn btn-group" />
+                            </div>
+                            <center><h4>@ViewBag.Error</h4></center>
+                            <center><h4>@ViewBag.Mensaje</h4></center>
+                        </div>
                         }
                             <center>
                                 @if (Session["Button"].ToString() == "D")

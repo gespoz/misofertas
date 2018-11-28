@@ -44,7 +44,7 @@
             @using (Html.BeginForm("Index", "Home", FormMethod.Post))
             {
                 <div class="form-group">
-                    @Html.Label("Rubro", "Rubro:", new { @class = "col-md-1" })
+                    @Html.Label("Rubro", "Filtrar:", new { @class = "col-md-1" })
                     <div class="col-md-2">
                         @Html.EnumDropDownListFor(m => m.RubroReg, new { @class = "form-control" })
                     </div>
