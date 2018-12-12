@@ -45,7 +45,7 @@ namespace MisOfertas.Web.Controllers
                     var consuDetails = db.CONSUMIDOR.Where(x => x.USUARIO_USERNAME == userDetails.USERNAME).FirstOrDefault();
                     Session["userName"] = userDetails.USERNAME;
                     Session["rutConsu"] = consuDetails.PERSONA_RUN;
-                    Session["ptsConsu"] = consuDetails.PUNTOS;
+                    Session["ptsConsu"] = consuDetails.PUNTOS+10;
                     return RedirectToAction("Index", "Home");
                 }
             }
@@ -77,7 +77,7 @@ namespace MisOfertas.Web.Controllers
                 {
                     Username = model.User,
                     Password = model.Pass,
-                    Perfil = "Consumidor"
+                    Perfil = "CONSUMIDOR"
                 };
 
                 if (persona.Agregar() == true && usuario.Agregar() == true)
